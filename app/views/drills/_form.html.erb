@@ -1,0 +1,6 @@
+<%= simple_form_for [@dg, @drill] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :points %>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>

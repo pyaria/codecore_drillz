@@ -6,11 +6,14 @@ class AnswersController < ApplicationController
 
   def create
     @answer = Answer.new answer_params
+    @answer.user = current_user
+    @answer.drill = Drill.find params[:drill_id]
     if @answer.save
       alert("Answer saved!")
     else
       alert("Answer not saved!")
     end
+    redirect_to edit_drill_group_drill_path(@drill.drill_group_id, @drill)
   end
 
   def edit
