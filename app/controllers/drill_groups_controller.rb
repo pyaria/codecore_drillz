@@ -7,6 +7,7 @@ class DrillGroupsController < ApplicationController
   def create
     dg_params = params.require(:drill_group).permit([:name, :description, :level])
     dg = DrillGroup.new dg_params
+    dg.user =current_user
     if dg.save
       redirect_to drill_group_path(dg)
     else
@@ -19,7 +20,7 @@ class DrillGroupsController < ApplicationController
   end
 
   def index
-      @drill_groups = DrillGroup.all
+    @drill_groups = DrillGroup.all
   end
 
 end

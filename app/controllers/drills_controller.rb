@@ -4,6 +4,10 @@ class DrillsController < ApplicationController
   before_action :find_drill, only: [:show, :edit, :update, :destroy]
 
 
+  def index
+    @drills = Drill.all
+  end
+
   def create
     redirect_to drill_group_path(@dg), alert: "Access denied." and return unless current_user.admin?
     @drill = Drill.new drill_params
