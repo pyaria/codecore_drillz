@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-<<<<<<< HEAD
-  
-
   devise_for :users, :controllers => { registrations: 'registrations' }
   root "drill_groups#index"
   resources :drill_groups do
@@ -63,10 +60,5 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-=======
-  devise_for :users
-  # root to: "home#index"
-  resources :drill_groups
-  
->>>>>>> resolving missed conflicts
+
 end
