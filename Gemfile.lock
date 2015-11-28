@@ -38,15 +38,24 @@ GEM
       tzinfo (~> 1.1)
     arel (6.0.3)
 <<<<<<< HEAD
+<<<<<<< HEAD
     bcrypt (3.1.10)
 
     awesome_print (1.6.1)
 =======
+=======
+    autoprefixer-rails (6.0.3)
+      execjs
+      json
+>>>>>>> added bootstrap and made drills work
     awesome_print (1.6.1)
     bcrypt (3.1.10)
 >>>>>>> resolving missed conflicts
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.3.5.1)
+      autoprefixer-rails (>= 5.0.0.1)
+      sass (>= 3.3.0)
     builder (3.2.2)
     byebug (8.2.1)
     coffee-rails (4.1.0)
@@ -67,6 +76,8 @@ GEM
     erubis (2.7.0)
     execjs (2.6.0)
     ffi (1.9.10)
+    font-awesome-rails (4.4.0.0)
+      railties (>= 3.2, < 5.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     hirb (0.7.3)
@@ -169,9 +180,11 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
+  bootstrap-sass
   byebug
   coffee-rails (~> 4.1.0)
   devise (~> 3.5, >= 3.5.2)
+  font-awesome-rails
   hirb
   interactive_editor
   jbuilder (~> 2.0)
