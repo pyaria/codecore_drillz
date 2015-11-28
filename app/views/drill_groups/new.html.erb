@@ -4,5 +4,6 @@
   <%= f.input :name%>
   <%= f.input :description %>
   <%= f.input :level, as: :radio_buttons, collection: ["Beginner", "Intermediate", "Advanced"]%>
+  <%= f.input :category %>
   <%= f.submit("submit") %>
 <% end %>
