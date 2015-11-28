@@ -18,9 +18,8 @@ class DrillGroupsController < ApplicationController
     @dg = DrillGroup.find params[:id]
   end
 
-
-
-
-
+  def index
+      @drill_groups = DrillGroup.all
+  end
 
 end
