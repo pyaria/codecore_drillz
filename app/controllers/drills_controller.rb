@@ -5,7 +5,7 @@ class DrillsController < ApplicationController
 
 
   def create
-    @dg = DrillGroup.find params[:drill_group_id]
+    redirect_to drill_group_path(@dg), alert: "Access denied." and return unless current_user.admin?
     @drill = Drill.new drill_params
     @drill.drill_group = @dg
     #@drill.user = current_user
@@ -23,17 +23,14 @@ class DrillsController < ApplicationController
   end
 
   def edit
-    @dg = DrillGroup.find_by_id params[:drill_group_id]
-    @drill = Drill.find_by_id params[:id]
     respond_to do |format|
-      #redirect_to drill_group_path(@dg), alert: "Access denied." and return unless can? :edit, @drill
+      redirect_to drill_group_path(@dg), alert: "Access denied." and return unless can? :edit, @drill
       format.js { render }
     end
   end
 
   def update
-    @dg = DrillGroup.find params[:drill_group_id]
-    @drill = Drill.find params[:id]
+    redirect_to drill_group_path(@dg), alert: "Access denied." and return unless can? :update, @drill
     respond_to do |format|
       if @drill.update(drill_params)
         format.html { redirect_to drill_group_path(@dg), notice: "Drill updated!" }
@@ -47,10 +44,9 @@ class DrillsController < ApplicationController
   end
 
   def destroy
-    @drill = Drill.find_by_id params[:id]
     respond_to do |format|
       if @drill
-        #redirect_to drill_group_path(params[:drill_group_id]), alert: "Access denied." and return unless can? :destroy, @drill
+        redirect_to drill_group_path(params[:drill_group_id]), alert: "Access denied." and return unless can? :destroy, @drill
         @drill.destroy
         format.html { redirect_to drill_group_path(@drill.drill_group), notice: "Drill deleted" }
         format.js { render }
@@ -61,8 +57,7 @@ class DrillsController < ApplicationController
   end
 
   def show
-    @dg = DrillGroup.find_by_id params[:drill_group_id]
-    @drill = Drill.find_by_id params[:id]
+
   end
 
   private
