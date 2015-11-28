@@ -14,8 +14,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-<<<<<<< HEAD
-=======
 gem 'simple_form'
 
 # Use ActiveModel has_secure_password
@@ -27,7 +25,10 @@ gem 'simple_form'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+<<<<<<< HEAD
 >>>>>>> progression with drill grops, new, create, show
+=======
+>>>>>>> resolving missed conflicts
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
