@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151128074150) do
+ActiveRecord::Schema.define(version: 20151128183202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,22 @@ ActiveRecord::Schema.define(version: 20151128074150) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categorizations", force: :cascade do |t|
+    t.integer  "drill_group_id"
+    t.integer  "category_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "categorizations", ["category_id"], name: "index_categorizations_on_category_id", using: :btree
+  add_index "categorizations", ["drill_group_id"], name: "index_categorizations_on_drill_group_id", using: :btree
 
   create_table "drill_completes", force: :cascade do |t|
     t.integer  "user_id"
@@ -53,6 +69,16 @@ ActiveRecord::Schema.define(version: 20151128074150) do
 
   add_index "drill_groups", ["user_id"], name: "index_drill_groups_on_user_id", using: :btree
 
+  create_table "drill_records", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "drill_id"
+  end
+
+  add_index "drill_records", ["drill_id"], name: "index_drill_records_on_drill_id", using: :btree
+  add_index "drill_records", ["user_id"], name: "index_drill_records_on_user_id", using: :btree
+
   create_table "drills", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
@@ -61,8 +87,10 @@ ActiveRecord::Schema.define(version: 20151128074150) do
     t.datetime "updated_at",     null: false
     t.integer  "drill_group_id"
     t.integer  "user_id"
+    t.integer  "answer_id"
   end
 
+  add_index "drills", ["answer_id"], name: "index_drills_on_answer_id", using: :btree
   add_index "drills", ["drill_group_id"], name: "index_drills_on_drill_group_id", using: :btree
   add_index "drills", ["user_id"], name: "index_drills_on_user_id", using: :btree
 
@@ -88,9 +116,14 @@ ActiveRecord::Schema.define(version: 20151128074150) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "categorizations", "categories"
+  add_foreign_key "categorizations", "drill_groups"
   add_foreign_key "drill_completes", "drills"
   add_foreign_key "drill_completes", "users"
   add_foreign_key "drill_groups", "users"
+  add_foreign_key "drill_records", "drills"
+  add_foreign_key "drill_records", "users"
+  add_foreign_key "drills", "answers"
   add_foreign_key "drills", "drill_groups"
   add_foreign_key "drills", "users"
 end

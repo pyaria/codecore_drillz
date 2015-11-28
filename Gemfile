@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+
+gem "bootstrap-sass"
 gem 'rails', '4.2.4'
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
@@ -8,6 +10,7 @@ gem 'devise', '~> 3.5', '>= 3.5.2'
 gem "bootstrap-sass"
 gem "font-awesome-rails"
 gem 'cancancan', '~> 1.10'
+gem "faker"
 
 
 
