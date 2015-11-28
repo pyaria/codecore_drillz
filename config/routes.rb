@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :drills do
     resources :answers, only: [:new, :show, :edit, :delete]
   end
+
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions'
