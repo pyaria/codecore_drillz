@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :drill_groups
   resources :categories, only: [:create, :destroy]
   resources :answers
+  resources :drills do
+    resources :answers, only: [:new, :show, :edit, :delete]
+  end
   devise_for :users, controllers: {
     registrations: 'registrations',
     sessions: 'users/sessions'

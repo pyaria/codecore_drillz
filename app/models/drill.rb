@@ -1,5 +1,4 @@
 class Drill < ActiveRecord::Base
-
   has_many :answers
   has_many :drill_records
   has_many :driller_users, through: :drill_records, source: :user
@@ -9,5 +8,4 @@ class Drill < ActiveRecord::Base
 
   validates :name, presence: true
   validates :description, presence: true
-
 end
