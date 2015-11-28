@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
 
-  devise_for :users, :controllers => { registrations: 'registrations' }
   root "drill_groups#index"
-  resources :drill_groups do
-    resources :drills
-  end
+  resources :drill_groups
+  resources :answers
+
+  devise_for :users, :controllers => {
+    registrations: 'registrations'
+    sessions: 'users/sessions'}
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -60,4 +63,5 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+>>>>>>> 0daac5492da393b930441e84aecf41f43ab9e032
 end
