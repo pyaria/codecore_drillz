@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   root "drill_groups#index"
-  resources :drill_groups
+  resources :drill_groups do
+    resources :drills, only: [:show, :edit, :update]
+  end
   resources :categories, only: [:create, :destroy]
   resources :answers
   resources :drills do
