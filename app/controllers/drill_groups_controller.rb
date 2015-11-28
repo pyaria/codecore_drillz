@@ -16,8 +16,13 @@ class DrillGroupsController < ApplicationController
 
   def show
     @dg = DrillGroup.find params[:id]
+    @drills = @dg.drills.order(created_at: :desc)
+    @drill = Drill.new
   end
 
+  def index
+    @drill_groups = DrillGroup.order(updated_at: :desc)
+  end
 
 
 

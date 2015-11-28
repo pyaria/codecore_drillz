@@ -1,0 +1,7 @@
+<h1>Drill: <%= @drill.name %></h1>
+
+<p><%= @drill.name %></p>
+<p><%= @drill.description %></p>
+
+<%= link_to "Delete", drill_group_drill_path(@dg, @drill), method: :delete, class: "btn btn-danger pull-right", data: {confirm: "Are you sure?", disable_with: "deleting..."}%>
+<%= link_to "Edit", edit_drill_group_drill_path(@dg, @drill), class: "btn btn-info pull-right edit_drill", id: "edit_btn_#{dom_id(drill)}"%>
