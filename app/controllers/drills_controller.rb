@@ -58,7 +58,6 @@ class DrillsController < ApplicationController
 
   def show
     @answers = @drill.answers
-
   end
 
   private
