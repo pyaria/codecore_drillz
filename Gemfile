@@ -10,6 +10,7 @@ gem 'devise', '~> 3.5', '>= 3.5.2'
 gem "bootstrap-sass"
 gem "font-awesome-rails"
 gem 'cancancan', '~> 1.10'
+gem "faker"
 
 
 
