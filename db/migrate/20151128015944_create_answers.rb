@@ -2,7 +2,6 @@ class CreateAnswers < ActiveRecord::Migration
   def change
     create_table :answers do |t|
       t.string :description
-      t.references :drills, index: true, foreign_key: true
 
       t.timestamps null: false
     end
