@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+
+  devise_for :users, :controllers => { registrations: 'registrations' }
+  root "drill_groups#index"
+  resources :drill_groups do
+    resources :drills
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
