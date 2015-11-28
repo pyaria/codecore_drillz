@@ -3,7 +3,7 @@
 <div>
   <% @drill_groups.each do |dg| %>
     <div class="well clickable_html">
-        <%= dg.title %>
+        <%= dg.name %>
         <%= link_to "Show", drill_group_path(dg), class: "btn btn-primary btn-sm pull-right" %>
     </div>
   <% end %>
