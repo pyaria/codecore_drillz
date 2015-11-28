@@ -16,6 +16,7 @@ class DrillGroupsController < ApplicationController
 
   def show
     @dg = DrillGroup.find params[:id]
+    @drills = @dg.drills
   end
 
   def index
