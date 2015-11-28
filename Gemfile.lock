@@ -37,11 +37,8 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.3)
-<<<<<<< HEAD
-    bcrypt (3.1.10)
-=======
     awesome_print (1.6.1)
->>>>>>> 743ed0592154262bf61644a657c56af79b39d790
+    bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
@@ -168,12 +165,9 @@ DEPENDENCIES
   awesome_print
   byebug
   coffee-rails (~> 4.1.0)
-<<<<<<< HEAD
   devise (~> 3.5, >= 3.5.2)
-=======
   hirb
   interactive_editor
->>>>>>> 743ed0592154262bf61644a657c56af79b39d790
   jbuilder (~> 2.0)
   jquery-rails
   pg
