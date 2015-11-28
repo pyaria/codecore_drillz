@@ -1,5 +1,7 @@
 <h1 class="page-header">All Drill Groups</h1>
-<%= link_to("New Drill Group", new_drill_group_path, class: "btn btn-primary") %>
+<% if user_signed_in? && current_user.admin %>
+  <%= link_to("New Drill Group", new_drill_group_path, class: "btn btn-primary") %>
+<% end %>
 <div>
   <% @drill_groups.each do |dg| %>
     <div class="well clickable_html">
