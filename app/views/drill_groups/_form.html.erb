@@ -1,6 +1,8 @@
 <%= simple_form_for @dg do |f| %>
   <%= f.input :name%>
   <%= f.input :description %>
+<div class="buffer"></div>
   <%= f.input :level, as: :radio_buttons, collection: ["Beginner", "Intermediate", "Advanced"]%>
-  <%= f.submit("submit") %>
+  <hr>
+  <%= f.button :submit, "Make a Drill Group", class: "btn btn-primary" %>
 <% end %>
