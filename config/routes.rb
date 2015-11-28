@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
 
-  devise_for :users
-  # root to: "home#index"
+  root "drill_groups#index"
   resources :drill_groups
   resources :categories, only: [:create, :destroy]
+  resources :answers
+  devise_for :users, controllers: {
+    registrations: 'registrations',
+    sessions: 'users/sessions'
+  }
+
 end
