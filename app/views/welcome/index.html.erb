@@ -14,10 +14,10 @@
 <div id="clear-left" class="buffer"></div>
 <% if current_user.present? %>
   <div class="marquee-div">
-  <p class="myButton"><%= link_to "Enter", drill_groups_path  %></p>
+    <%= link_to "Enter", drill_groups_path, class: "myButton"%>
   </div>
 <% else %>
   <div class="marquee-div">
-  <p class="myButton"><%= link_to "Enter", new_user_session_path %></p>
+  <%= link_to "Enter", new_user_session_path, class: "myButton" %>
   </div>
 <% end %>
