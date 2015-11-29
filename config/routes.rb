@@ -1,18 +1,19 @@
 Rails.application.routes.draw do
 
-  root "drill_groups#index"
-  resources :drill_groups
+  root "welcome#index"
+
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  #mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  devise_for :users, :controllers => { registrations: 'registrations' }
+  resources :drill_groups do
+    resources :drills
+  end
   resources :categories, only: [:create, :destroy, :index, :show]
   resources :answers
   resources :badges
   get "/your_badges", to: "badges#user_badges", as: :badges_of_user
-  resources :drills do
+  get "/leaderboard", to: "leaderboard#leaderboard", as: :leaderboard
+  resources :drills, only: [] do
     resources :answers, only: [:new, :show, :edit, :delete]
   end
-  get "/leaderboard", to: "leaderboard#leaderboard", as: :leaderboard  
-  devise_for :users, controllers: {
-    registrations: 'users/registrations',
-    sessions: 'users/sessions'
-  }
-
 end
