@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   root "welcome#index"
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, :controllers => { registrations: 'registrations' }
-  resources :drill_groups, only: [:new, :edit, :delete, :create]
-  resources :drill_groups, only: :show do
+  resources :drill_groups, only: [:new, :edit, :delete, :create, :index]
+  resources :drill_groups, only: [:show] do
     resources :drills
   end
   resources :categories, only: [:create, :destroy, :index, :show]
