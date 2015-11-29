@@ -20,7 +20,6 @@
       </ul>
       <% if user_signed_in? && current_user.admin?%>
         <p class="navbar-text navbar-right">Signed in as <%= current_user.full_name %></p>
-        <p class="navbar-text navbar-right"><%= link_to "Drills", drills_path  %></p>
         <p class="navbar-text navbar-right"><%= link_to "Create Drill Group", new_drill_group_path %> </p>
         <p class="navbar-text navbar-right"><%= link_to "Badges Created by You", root_path  %></p>
       <% elsif user_signed_in? && !current_user.admin? %>
