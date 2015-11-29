@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :answers
   resources :drills do
     resources :answers
+    resources :drill_completes, only: [:create]
   end
 
   devise_for :users, controllers: {

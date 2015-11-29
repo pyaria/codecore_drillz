@@ -3,19 +3,25 @@
 <p><%= @drill.name %></p>
 <p><%= @drill.description %></p>
 
+<!-- FOR ADMIN USERS ONLY -->
 <% if user_signed_in? && current_user.admin %>
   <%= link_to "Delete", drill_group_drill_path(@dg, @drill), method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?", disable_with: "deleting..."}%>
   <%= link_to "Edit", edit_drill_group_drill_path(@dg, @drill), class: "btn btn-info", id: "edit_btn_#{dom_id(@drill)}"%>
-
   <hr>
-  
   <!-- RENDER NEW ANSWER FORM -->
   <%= render "/answers/form" %>
 
+  <h1>All Answers</h1>
+  <div id="answers_for_drill">
+    <% if @answer %>
+      <% @answers.each do |answer| %>
+        <%= answer.description%>
+      <% end %>
+    <% end %>
+  </div>
 <% end %>
-
-<div id="answers_for_drill">
-  <% @answers.each do |answer| %>
-    <%= answer.body %>
-  <% end %>
-</div>
+<h1>Try answering this drill!</h1>
+<%= simple_form_for :answer, drill_answers_path(@drill), :method => :post do |answer| %>
+  <%= answer.input :description %>
+  <%= answer.button :submit, "Submit your answer!" %>
+<% end %>
