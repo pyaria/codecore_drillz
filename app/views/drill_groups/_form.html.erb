@@ -3,6 +3,9 @@
 <%= simple_form_for @dg do |f| %>
   <%= f.input :name, hint: "Requires a name" %>
   <%= f.input :description%>
+  <div class="inline_check_boxes">
+    <%= collection_check_boxes :badges, :badge_ids, Badge.order(:name), :id, :name  %>
+  </div>
 <div class="buffer"></div>
   <%= f.input :level,
           :collection => [[0, "Beginner"], [1, "Intermediate"], [2, "Advanced"]],
