@@ -11,6 +11,9 @@
 
 <div id="answers_for_drill">
   <% @answers.each do |answer| %>
-    <%= answer.description %>
+    <div>
+      <p><%= answer.description %>,
+              <%= answer.user.first_name %> <%= answer.user.last_name %></p>
+    </div>
   <% end %>
 </div>

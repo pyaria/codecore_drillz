@@ -13,7 +13,7 @@ class DrillCompletesController < ApplicationController
         drillcomplete.user = current_user
         drillcomplete.drill = @drill
         if drillcomplete.save
-          flash[:alert] = "You got it right!"
+          flash[:notice] = "You got it right!"
           redirect_to drill_group_drill_path(@drill.drill_group, @drill)
           return
         else
