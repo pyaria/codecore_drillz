@@ -1,69 +1,14 @@
+// Backgrounds:
 body {
   background-image: image-url("school.png");
 }
 
-.marquee-div {
-  display: flex;
-  justify-content: center;
+.body-colour {
+  background-color: #312E2B;
 }
+// _________________________________________
 
-// Buffer ID's
-#thirty {
-  height: 30px;
-}
-#clear-left{
-  height: 70px;
-  clear: left;
-}
-
-div#home-page-title{
-  p#title {
-    font-family: 'Bubblegum Sans', cursive;
-    color: #030304;
-    font-size: 60px;
-    text-align: center;
-  }
-}
-
-.navbar {
-  background-color: #030304;
-  border: none;
-  opacity: 0.8;
-}
-
-.circle {
-  height: 130px;
-  width: 130px;
-  background-color: white;
-  border-radius: 50%;
-  float: left;
-}
-
-i.fa {
-  height: 100px;
-  width: 100px;
-  margin-left:25px;
-  margin-top:28px;
-}
-
-i.fa.fa-question {
-  height: 100px;
-  width: 100px;
-  margin-left:40px;
-  margin-top:28px;
-}
-
-.col-buffer-2 {
-  width: 74px;
-  height: 100px;
-  float: left;
-}
-
-.col-buffer-3 {
-  width: 74px;
-  height: 100px;
-  float: left;
-}
+// NavBar
 
 ul.dropdown-menu {
   background-color: #030304;
@@ -73,48 +18,65 @@ li.dropdown.open {
   background-color: #030304;
 }
 
+// ________________________
 
-
-.myButton {
-	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
-	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
-	box-shadow:inset 0px 1px 0px 0px #ffffff;
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f6f6f6));
-	background:-moz-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
-	background:-webkit-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
-	background:-o-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
-	background:-ms-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
-	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0);
-	background-color:#ffffff;
-	-moz-border-radius:6px;
-	-webkit-border-radius:6px;
-	border-radius:6px;
-	border:1px solid #dcdcdc;
-	display:inline-block;
-	cursor:pointer;
-	color:#666666;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-	padding:28px 76px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
-  a {
-    color: #030304;
+// For Welcome Page
+  .marquee-div {
+    display: flex;
+    justify-content: center;
   }
-}
-.myButton:hover {
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f6f6f6), color-stop(1, #ffffff));
-	background:-moz-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
-	background:-webkit-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
-	background:-o-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
-	background:-ms-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
-	background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6', endColorstr='#ffffff',GradientType=0);
-	background-color:#f6f6f6;
-}
-.myButton:active {
-	position:relative;
-	top:1px;
-}
+
+  // Buffer ID's
+  #thirty {
+    height: 30px;
+  }
+
+  #fourty {
+    height: 40px;
+  }
+  #clear-left{
+    height: 70px;
+    clear: left;
+  }
+
+
+
+  .navbar {
+    background-color: #030304;
+    border: none;
+    opacity: 0.8;
+  }
+
+  .circle {
+    height: 130px;
+    width: 130px;
+    background-color: white;
+    border-radius: 50%;
+    float: left;
+  }
+
+  i.fa {
+    height: 100px;
+    width: 100px;
+    margin-left:25px;
+    margin-top:28px;
+  }
+
+  i.fa.fa-question {
+    height: 100px;
+    width: 100px;
+    margin-left:40px;
+    margin-top:28px;
+  }
+
+  .col-buffer-2 {
+    width: 74px;
+    height: 100px;
+    float: left;
+  }
+
+  .col-buffer-3 {
+    width: 74px;
+    height: 100px;
+    float: left;
+  }

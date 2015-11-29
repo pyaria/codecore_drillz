@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   root "welcome#index"
+  get "/dashboard", to: "welcome#dashboard", as: :dashboard
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :drill_groups, only: [:new, :edit, :destroy, :create, :index]

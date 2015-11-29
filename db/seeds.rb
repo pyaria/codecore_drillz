@@ -1,26 +1,28 @@
-#
+
 # 10.times do
 #
 #   DrillGroup.create!({name: Faker::Hacker.noun})
 # end
 #
-# 10.times do
-# 	Drill.create({name: Faker::Company.bs,
-#                 description:  Faker::Lorem.paragraph })
+10.times do
+	Drill.create({name: Faker::Company.bs,
+                description:  Faker::Lorem.paragraph,
+                points: 10 })
+
 #
-#   DrillGroup.create!({name: Faker::Hacker.noun})
+  DrillGroup.create!({name: Faker::Hacker.noun})
+
+  user = User.find(1)
+  dg = DrillGroup.create({name: Faker::Hacker.noun,
+                          description: Faker::Hacker.say_something_smart,
+                          user_id: user.id
+                          })
+  answer = Answer.create({description: Faker::Hacker.say_something_smart})
+  drill = Drill.create({name: Faker::Company.bs,
+                        description:  Faker::Lorem.paragraph, answer_id: answer.id,
+                        drill_group_id: dg.id })
 #
-#   user = User.find(1)
-#   dg = DrillGroup.create({name: Faker::Hacker.noun,
-#                           description: Faker::Hacker.say_something_smart,
-#                           user_id: user.id
-#                           })
-#   answer = Answer.create({description: Faker::Hacker.say_something_smart})
-#   drill = Drill.create({name: Faker::Company.bs,
-#                         description:  Faker::Lorem.paragraph, answer_id: answer.id,
-#                         drill_group_id: dg.id })
-#
-# end
+end
 #
 # 10.times do
 #   User.create({ first_name:   Faker::Name.first_name,
@@ -39,21 +41,21 @@
 #                 password:   Faker::Internet.password })
 # end
 
-badges = ["Ruby Lover", "Rails Routes", "Javascript Master", "Rails Newbie"]
-#badges.sort! {|a, b| a <=> b}
-
-badges.each do |badge|
-  Badge.create(name: badge)
-end
+# badges = ["Ruby Lover", "Rails Routes", "Javascript Master", "Rails Newbie"]
+# #badges.sort! {|a, b| a <=> b}
+#
+# badges.each do |badge|
+#   Badge.create(name: badge)
+# end
 
 # 10.times do
 # 	answer = Answer.create!({description: Faker::Hacker.say_something_smart})
 # 	Drill.create!({name: Faker::Company.bs,
 #                	 description:  Faker::Lorem.paragraph, answer_id: answer.id })
 # end
-
-
-
+#
+#
+#
 # admin = User.create!(
 # 	:first_name => "master",
 # 	:last_name	=> "bot",
