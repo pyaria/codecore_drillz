@@ -38,7 +38,9 @@ class DrillsController < ApplicationController
         format.js { render :update_success }
       else
         @drills = @dg.drills.order(created_at: :desc)
-        format.html { render "drill_groups/show" }
+        @answer = Answer.new
+        @answers = @drill.answers
+        format.html { render :edit }
         format.js { render :update_failure }
       end
     end

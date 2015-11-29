@@ -1,5 +1,5 @@
 class DrillGroup < ActiveRecord::Base
-  has_many :drills
+  has_many :drills, dependent: :destroy
   belongs_to :user
 
   has_many :badgings, dependent: :destroy

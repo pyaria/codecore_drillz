@@ -15,10 +15,17 @@
   <div id="answers_for_drill">
     <%= render "/answers/answers_for_a_drill" %>
   </div>
-  
+
 <% end %>
 <h1>Try answering this drill!</h1>
 <%= simple_form_for [@drill, @drillcomplete] do |user_answer| %>
   <%= user_answer.input :new_answer %>
   <%= user_answer.button :submit, "Submit your answer!" %>
 <% end %>
+
+<div id="answers_for_drill">
+<% if @show_answers %>
+  <h2>All Answers</h2>
+  <%= render "/answers/answers_for_a_drill" %>
+<% end %>
+</div>
