@@ -2,9 +2,13 @@
 <%= simple_form_for @dg do |f| %>
   <%= f.input :name, hint: "Requires a name" %>
   <%= f.input :description%>
-  <div class="inline_check_boxes">
-    <%= f.association :badges, as: :check_boxes  %>
+
+  <div class="badge-checkbox">
+  <%= f.association :badges, :as => :check_boxes, item_wrapper_tag: :div, item_wrapper_class: "badges", :collection => Badge.order(:name),
+  :label => false, :inline_label => false, :label_method => lambda { |b| url_image = asset_path b.name.gsub(' ', '_').downcase
+   "#{image_tag(url_image)}".html_safe } %>
   </div>
+
 <div class="buffer"></div>
   <%= f.input :level,
           :collection => [[0, "Beginner"], [1, "Intermediate"], [2, "Advanced"]],

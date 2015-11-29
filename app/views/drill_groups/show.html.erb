@@ -16,7 +16,10 @@
   <br>
   <p>Badges you can win on completion:</p>
   <% @dg.badges.each do |badge| %>
-    <div class="label label-default"><%= badge.name %></div>
+    <!-- <div class="label label-default"> -->
+    <div class="badges">
+      <img src="<%= asset_path badge.name.gsub(' ', '_').downcase %>"/>
+    </div>
   <% end %>
   <br><br>
 <% end %>
