@@ -1,6 +1,6 @@
 <div class="form-group">
   <h3>Create a new answer</h3>
-  <%= simple_form_for [@drill, @answer], remote: true do |answer| %>
+  <%= simple_form_for [@drill, @answer] do |answer| %>
     <%= answer.input :description %>
     <%= answer.submit(class: "btn btn-primary", data: {disable_with: "Saving..."}) %>
   <% end %>
