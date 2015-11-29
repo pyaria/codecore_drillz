@@ -51,7 +51,7 @@ class DrillGroupsController < ApplicationController
   private
 
   def dg_params
-    params.require(:drill_group).permit(:name, :description, :level, {badge_ids: []})
+    params.require(:drill_group).permit(:name, :description, :level, {badge_ids: []}, {category_ids: []})
   end
 
   def find_drill_group
