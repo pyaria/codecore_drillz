@@ -7,7 +7,7 @@
         <%= link_to "Start", drill_group_path(dg), class: "btn btn-primary btn-sm pull-right" %>
         <%= link_to "Remove", drill_group_user_drill_group_path(dg, udg), class: "btn btn-warning btn-sm pull-right", method: :delete %>
         <div class="pull-right">
-          score: <%= current_user.get_drill_group_score(dg)%> %
+          score: <%= current_user.get_drill_group_score(dg)%> 
         </div>
     </div>
   <% end %>
