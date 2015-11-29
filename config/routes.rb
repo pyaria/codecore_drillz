@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  root "welcome#index"
 
+  root "welcome#index"
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   #mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, :controllers => { registrations: 'registrations' }
@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   get "/leaderboard", to: "leaderboard#leaderboard", as: :leaderboard
   resources :drills, only: [] do
     resources :answers, only: [:new, :show, :edit, :delete]
+    resources :drill_completes, only: [:create]
   end
 end
