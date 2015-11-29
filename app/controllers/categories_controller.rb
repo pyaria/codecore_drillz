@@ -1,11 +1,11 @@
 class CategoriesController < ApplicationController
 
   def index
-    categories = Category.order(:name)
-    @categories = categories.where("name LIKE?", "%#{params[:term]}%") if params[:term]
+    @categories = Category.order(:name)
+    @cats_for_autocomplete = @categories.select("id", "name")
     respond_to do |format|
       format.html  { render :index }
-      format.json  { render :json => @categories.map(&:name) }
+      format.json  { render :json => @cats_for_autocomplete.map(&:name).to_json }
     end
   end
 

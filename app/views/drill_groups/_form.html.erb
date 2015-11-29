@@ -15,7 +15,6 @@
           :checked => true%>
   <div class="buffer"></div>
     <%= f.association :categories,
-          include_blank: false,
           as: :search, data:
           {autcomplete_source: categories_path} %>
   <div class="buffer"></div>
