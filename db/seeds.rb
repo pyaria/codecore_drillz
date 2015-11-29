@@ -1,12 +1,23 @@
 
 10.times do
-  DrillGroup.create({name: Faker::Hacker.noun})
+  user = User.find(1)
+  dg = DrillGroup.create({name: Faker::Hacker.noun,
+                          description: Faker::Hacker.say_something_smart,
+                          user_id: user.id
+                          })
+  answer = Answer.create({description: Faker::Hacker.say_something_smart})
+  drill = Drill.create({name: Faker::Company.bs,
+                        description:  Faker::Lorem.paragraph, answer_id: answer.id,
+                        drill_group_id: dg.id })
+
 end
 
 10.times do
-  answer = Answer.create({description: Faker::Hacker.say_something_smart})
-  drill = Drill.create({name: Faker::Company.bs,
-                description:  Faker::Lorem.paragraph, answer_id: answer.id })
+  User.create({ first_name:   Faker::Name.first_name,
+                last_name:    Faker::Name.last_name,
+                email:        Faker::Internet.email,
+                password:      Faker::Internet.password
+                  })
 end
 
 10.times do
@@ -16,4 +27,11 @@ end
                 last_name:  Faker::Name.last_name,
                 email:      Faker::Internet.email,
                 password:   Faker::Internet.password })
+end
+
+badges = ["Ruby Lover", "Rails Routes", "Javascript Master", "Rails Newbie"]
+badges.sort! {|a, b| a <=> b}
+
+badges.each do |bad|
+  Badge.create(name: bad)
 end
