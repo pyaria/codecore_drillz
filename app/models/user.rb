@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   def badges
     badges = Array.new
     drill_groups = drills.each.map{|drill| drill.drill_group}.uniq
-    drill_groups.each do
+    drill_groups.each do |drill_group|
       if (finished?(drill_group))
         badges.push drill_group.badges
       end
@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
 # not tested yet, will be tested when seed file ready, then correct
   def finished? drill_group
     drill_group.drills.each do |drill|
-      if user.drills.include? drill
+      if drills.include? drill
       else
         return false
       end
@@ -35,7 +35,11 @@ class User < ActiveRecord::Base
 
 # not tested yet, will be tested when seed file ready
   def points
-    drills.inject{|sum,drill| sum + drill.point}
+    if drills.any?
+      return drills.inject{|sum,drill| sum + drill.points}
+    else
+      return 0
+    end
   end
 
   def full_name
