@@ -32,4 +32,14 @@ class User < ActiveRecord::Base
     true
   end
 
+# not tested yet, will be tested when seed file ready
+  def points
+    drills.inject{|sum,drill| sum + drill.point}
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
+
 end
