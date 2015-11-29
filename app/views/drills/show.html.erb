@@ -6,4 +6,10 @@
 <% if user_signed_in? && current_user.admin %>
   <%= link_to "Delete", drill_group_drill_path(@dg, @drill), method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?", disable_with: "deleting..."}%>
   <%= link_to "Edit", edit_drill_group_drill_path(@dg, @drill), class: "btn btn-info", id: "edit_btn_#{dom_id(@drill)}"%>
+
+  <div id="answers_for_drill">
+    <% @answers.each do |answer| %>
+      <%= answer.body %>
+    <% end %>
+  </div>
 <% end %>

@@ -2,7 +2,8 @@
 <% if user_signed_in? && current_user.admin %>
   <%= link_to("New Drill Group", new_drill_group_path, class: "btn btn-primary") %>
 <% end %>
-<div>
+
+<div class="col-md-8 col-md-offset-2">
   <% @drill_groups.each do |dg| %>
     <div class="well clickable_html">
         <%= dg.name %>

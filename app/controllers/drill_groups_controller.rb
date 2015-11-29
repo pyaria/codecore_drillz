@@ -57,6 +57,4 @@ class DrillGroupsController < ApplicationController
     @dg = DrillGroup.find params[:id]
   end
 
-
-
 end
