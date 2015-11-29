@@ -1,8 +1,19 @@
-<h1>Leaderboard</h1>
+<div class="row">
+  <div class="col-md-8">
+    <h1>Leaderboard</h1>
+  <% @users.each do |user| %>
 
-<% @users.each do |user| %>
+    <hr>
+    <%= user.full_name %> ---- <%= user.points %> points / <%= user.badges.count %> badges
 
-  <hr>
-  <%= user.full_name %> ---- <%= user.points %> / <%= user.badges.count %>
+  <% end %>
+  </div>
 
-<% end %>
+  <div class="col-md-4">
+    <div class="col-md-offset-6">
+      <h1>You</h1>
+      <p><%= current_user.points %> points</p>
+      <p><%= current_user.badges.count %> badges</p>
+    </div>
+  </div>
+</div>
