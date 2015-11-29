@@ -64,6 +64,8 @@ class User < ActiveRecord::Base
   # needs to be calculated in real time since more drills can be added.
   # this is the percentage score
   def get_drill_group_score(drill_group)
+    return 100 if drill_group.drills.count == 0
+
     drills_complete = 0
     drill_group.drills.each do |drill|
       if drill_completes.exists?(drill_id: drill)
