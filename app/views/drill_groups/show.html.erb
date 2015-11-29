@@ -19,9 +19,7 @@
 <h2 id="add_drill_heading">Add a Drill</h2>
 
 <%= simple_form_for [@dg, @drill] do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.submit class: "btn btn-primary" %>
+  <%= render "/drills/form" %>
 <% end %>
 
 <% if @drills.present? %>
