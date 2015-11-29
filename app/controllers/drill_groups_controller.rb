@@ -8,6 +8,7 @@ class DrillGroupsController < ApplicationController
   end
 
   def create
+    dg.user = current_user
     redirect_to drill_groups_path, alert: "Access denied." and return unless current_user.admin?
     @dg = DrillGroup.new dg_params
     @dg.user = current_user
@@ -19,6 +20,7 @@ class DrillGroupsController < ApplicationController
   end
 
   def show
+    @dg = DrillGroup.find params[:id]
     @drills = @dg.drills.order(created_at: :desc)
     @drill = Drill.new
   end

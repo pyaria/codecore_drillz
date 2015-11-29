@@ -11,7 +11,7 @@ class DrillsController < ApplicationController
     @drill.user = current_user
     respond_to do |format|
       if @drill.save
-        format.html { redirect_to drill_group_path(@dg), notice: "Drill created succussfully!" }
+        format.html { redirect_to drill_group_path(@dg), notice: "Drill created successfully!" }
         format.js { render :create_success }
       else
         @drills = @dg.drills.order(created_at: :desc)
@@ -22,8 +22,11 @@ class DrillsController < ApplicationController
   end
 
   def edit
+    @answer = Answer.new
+    @answers = @drill.answers
     respond_to do |format|
       redirect_to drill_group_path(@dg), alert: "Access denied." and return unless can? :edit, @drill
+      format.html { render }
       format.js { render }
     end
   end
@@ -56,7 +59,7 @@ class DrillsController < ApplicationController
   end
 
   def show
-
+    @answer = Answer.new
     @answers = @drill.answers
   end
 
