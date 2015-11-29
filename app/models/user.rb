@@ -35,7 +35,11 @@ class User < ActiveRecord::Base
 
 # not tested yet, will be tested when seed file ready
   def points
-    drills.inject{|sum,drill| sum + drill.point}
+    if drills.any?
+      drills.inject{|sum,drill| sum + drill.point}
+    else
+      return 0
+    end
   end
 
   def full_name
