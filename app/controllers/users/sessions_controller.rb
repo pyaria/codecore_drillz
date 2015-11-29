@@ -9,7 +9,7 @@ class Users::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   def create
     super do |resource|
-      BackgroundWorker.trigger(resource)
+      # BackgroundWorker.trigger(resource)
     end
   end
   # DELETE /resource/sign_out

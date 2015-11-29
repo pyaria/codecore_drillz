@@ -3,16 +3,14 @@ class DrillsController < ApplicationController
   before_action :find_drill_group, only: [:create, :show, :edit, :update, :destroy]
   before_action :find_drill, only: [:show, :edit, :update, :destroy]
 
-
   def create
     redirect_to drill_group_path(@dg), alert: "Access denied." and return unless current_user.admin?
     @drill = Drill.new drill_params
     @drill.drill_group = @dg
-    #@drill.user = current_user
-
+    @drill.user = current_user
     respond_to do |format|
       if @drill.save
-        format.html { redirect_to drill_group_path(@dg), notice: "Drill created succussfully!" }
+        format.html { redirect_to drill_group_path(@dg), notice: "Drill created successfully!" }
         format.js { render :create_success }
       else
         @drills = @dg.drills.order(created_at: :desc)
@@ -23,8 +21,11 @@ class DrillsController < ApplicationController
   end
 
   def edit
+    @answer = Answer.new
+    @answers = @drill.answers
     respond_to do |format|
       redirect_to drill_group_path(@dg), alert: "Access denied." and return unless can? :edit, @drill
+      format.html { render }
       format.js { render }
     end
   end
@@ -37,7 +38,9 @@ class DrillsController < ApplicationController
         format.js { render :update_success }
       else
         @drills = @dg.drills.order(created_at: :desc)
-        format.html { render "drill_groups/show" }
+        @answer = Answer.new
+        @answers = @drill.answers
+        format.html { render :edit }
         format.js { render :update_failure }
       end
     end
@@ -57,13 +60,16 @@ class DrillsController < ApplicationController
   end
 
   def show
+    @answer = Answer.new
     @answers = @drill.answers
+    @drillcomplete = DrillComplete.new
+    @answer = Answer.new
   end
 
   private
 
   def drill_params
-    params.require(:drill).permit(:name, :description)
+    params.require(:drill).permit(:name, :description, :points)
   end
 
   def find_drill_group

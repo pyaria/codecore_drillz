@@ -3,6 +3,7 @@
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <a class="navbar-brand" href="<%= root_path %>" ><i class='glyphicon glyphicon-home'></i> Home</a>
+      <%= link_to "Drill Groups", drill_groups_path, class:"nav navbar-brand" %>
     </div>
 
 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -11,15 +12,24 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
+          <li> <%= link_to "My Drills", user_drill_groups_path %></li>
+          <li> <%= link_to("Profile", profile_path) %></li>
           <li> <%= link_to("Log Out", destroy_user_session_path, method: :delete) %></li>
         <% else %>
           <li> <%= link_to "Sign Up", new_user_registration_path %></li>
           <li> <%= link_to "Log In", new_user_session_path %></li>
         <% end %>
       </ul>
-      <% if user_signed_in? %>
-        <p class="navbar-text navbar-right">Signed in as <%= "#{current_user.first_name} #{current_user.last_name}" %></p>
+      <% if user_signed_in? && current_user.admin?%>
+        <p class="navbar-text navbar-right">Signed in as <%= current_user.full_name %></p>
+        <p class="navbar-text navbar-right"><%= link_to "Create Drill Group", new_drill_group_path %> </p>
+        <p class="navbar-text navbar-right"><%= link_to "Badges Created by You", root_path  %></p>
+      <% elsif user_signed_in? && !current_user.admin? %>
+        <p class="navbar-text navbar-right">Signed in as <%= current_user.full_name %></p>
+        <p class="navbar-text navbar-right"><%= link_to "Your Badges", badges_of_user_path  %></p>
       <% end %>
+      <p class="navbar-text navbar-right"><%= link_to "Categories", categories_path  %></p>
+      <p class="navbar-text navbar-right"><%= link_to "Leaderboard", leaderboard_path  %></p>
     </div>
   </div>
 </nav>

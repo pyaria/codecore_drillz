@@ -1,3 +1,23 @@
-<h1>Welcome to CodeCore Drillz</h1>
+<div id="home-page-title">
+  <p id="title">CodeCore Drillz</p>
+</div>
+<div id="thirty" class="buffer"></div>
 
-<%= link_to "Enter", new_user_session_path  %>
+  <div class="marquee-div">
+  <div class="circle"><i class="fa fa-question fa-5x"></i></div>
+  <div class="col-buffer-2"></div>
+  <div class="circle"><i class="fa fa-cogs fa-5x"></i></div>
+  <div class="col-buffer-3"></div>
+  <div class="circle"><i class="fa fa-money fa-5x"></i></div>
+  </div>
+
+<div id="clear-left" class="buffer"></div>
+<% if current_user.present? %>
+  <div class="marquee-div">
+    <%= link_to "Enter", drill_groups_path, class: "myButton"%>
+  </div>
+<% else %>
+  <div class="marquee-div">
+  <%= link_to "Enter", new_user_session_path, class: "myButton" %>
+  </div>
+<% end %>

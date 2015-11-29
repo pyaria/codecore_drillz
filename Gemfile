@@ -1,17 +1,11 @@
 source 'https://rubygems.org'
 
-gem "bootstrap-sass"
 gem 'rails', '4.2.4'
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'devise', '~> 3.5', '>= 3.5.2'
-gem "bootstrap-sass"
-gem "font-awesome-rails"
-gem 'cancancan', '~> 1.10'
-gem "faker"
-
 
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -21,11 +15,20 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-
+gem "font-awesome-rails"
+gem "bootstrap-sass"
+gem 'cancancan', '~> 1.10'
 gem 'simple_form'
+gem 'friendly_id'
+gem "faker"
+gem "rails_admin"
+gem 'delayed_job_active_record'
+gem "delayed_job_web"
+gem "letter_opener"
+
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -36,6 +39,11 @@ gem 'simple_form'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+
+  gem 'rspec-rails'
+
+  gem 'factory_girl_rails'
+
 end
 
 group :development do

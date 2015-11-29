@@ -1,0 +1,19 @@
+<h1 class="page-header">Edit or Add an Answer to <%= @drill.name %></h1>
+<%= render "form" %>
+<p>Created by: <%= @drill.user.first_name %> <%= @drill.user.last_name %></p>
+
+<hr>
+
+<h1>Create an answer</h1>
+<%= render "/answers/form" %>
+
+<hr>
+
+<div id="answers_for_drill">
+  <% @answers.each do |answer| %>
+    <div>
+      <p><%= answer.description %>,
+              <%= answer.user.first_name %> <%= answer.user.last_name %></p>
+    </div>
+  <% end %>
+</div>

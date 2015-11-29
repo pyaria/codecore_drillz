@@ -1,0 +1,13 @@
+<h1><%= current_user.first_name %></h1>
+<h3><%= current_user.last_name %></h3>
+<p><%= current_user.email %></p>
+
+<h4>Points:</h4>
+<p><%= current_user.points %></p>
+
+<h4>Badges:</h4>
+<div>
+<% current_user.badges.each do |badge| %>
+  <div class="label label-default"><%= badge.name %></div>
+<% end %>
+</div>
