@@ -4,7 +4,13 @@
   <%= f.input :name, hint: "Requires a name" %>
   <%= f.input :description%>
 <div class="buffer"></div>
-  <%= f.input :level, as: :radio_buttons, collection: ["Beginner", "Intermediate", "Advanced"]%>
+  <%= f.input :level,
+          :collection => [[0, "Beginner"], [1, "Intermediate"], [2, "Advanced"]],
+          :label_method => :last,
+          :value_method => :first,
+          :as => :radio_buttons,
+          :item_wrapper_class => 'inline',
+          :checked => true%>
   <div class="buffer"></div>
   <%= f.button :submit, "Make a Drill Group", class: "btn btn-primary" %>
 <% end %>
