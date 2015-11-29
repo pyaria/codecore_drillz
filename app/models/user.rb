@@ -12,7 +12,18 @@ class User < ActiveRecord::Base
   has_many :user_badges, dependent: :nullify
   has_many :badges, through: :user_badges
 
-#### The fuck is all this shit?????
+  has_many :drill_groups, dependent: :nullify
+  has_many :drills, dependent: :nullify
+
+  has_many :user_drill_groups, dependent: :nullify
+  has_many :drill_groups, through: :user_drill_groups
+
+
+#### This isn't a good idea. Going through all records every time we want badges
+#### or points will have terrible performance. Also users will lose badges if more
+#### drills are added. I feel bad erasing all your hard work but
+#### you should take a good look at what I did to solve these problems.
+####
 # # not tested yet, will be tested when seed file ready, then correct
 #   def badges
 #     badges = Array.new
@@ -49,6 +60,20 @@ class User < ActiveRecord::Base
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  # needs to be calculated in real time since more drills can be added.
+  # this is the percentage score
+  def get_drill_group_score(drill_group)
+    drills_complete = 0
+    drill_group.drills.each do |drill|
+      if drill_completes.exists?(drill_id: drill)
+        drills_complete += 1
+      end
+    end
+
+    (drills_complete.to_f / drill_group.drills.count * 100).round(0)
+  end
+
 
 
 end

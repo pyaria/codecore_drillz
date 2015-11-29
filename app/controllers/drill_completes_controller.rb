@@ -19,7 +19,8 @@ class DrillCompletesController < ApplicationController
           # see if user can get a badge
           badge = true
           @dg.drills.each do |drill|
-            if !user.drill_completes.include? drill
+            next if drill == @drill
+            if !current_user.drill_completes.exists?(drill_id: drill)
               badge = false
               break
             end
@@ -30,8 +31,15 @@ class DrillCompletesController < ApplicationController
               ub = UserBadge.new
               ub.user = current_user
               ub.badge = badge
+              ub.save
             end
           end
+
+          # give the user points
+          current_user.points = 0 unless current_user.points
+          current_user.points += @drill.points
+          current_user.save
+
 
           flash[:notice] = "You got it right!"
           render 'drills/show'

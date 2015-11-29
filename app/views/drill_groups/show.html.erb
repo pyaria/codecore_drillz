@@ -2,7 +2,7 @@
 <p><%= @dg.description %></p>
 <% level = "" %>
 <% if @dg.level == 0 %>
-  <% @dg.level = "Beginner" %>
+  <% level = "Beginner" %>
 <% elsif @dg.level == 1 %>
   <% level = "Intermediate" %>
 <% else %>
@@ -30,11 +30,7 @@
 
 <h2 id="add_drill_heading">Add a Drill</h2>
 
-<%= simple_form_for [@dg, @drill] do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.submit class: "btn btn-primary" %>
-<% end %>
+<%= render 'drills/form' %>
 
 
 <h2>Drills</h2>

@@ -5,5 +5,8 @@ class DrillGroup < ActiveRecord::Base
   has_many :badgings, dependent: :destroy
   has_many :badges, through: :badgings
 
+  has_many :user_drill_groups, dependent: :destroy
+  has_many :users, through: :user_drill_groups
+
   validates :name, presence: true
 end

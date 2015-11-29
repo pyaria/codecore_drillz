@@ -5,8 +5,12 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :drill_groups, only: [:new, :edit, :destroy, :create, :index]
   resources :drill_groups, only: [:show] do
+    resources :user_drill_groups, only: [:create, :destroy]
     resources :drills
   end
+
+  resources :user_drill_groups, only: [:index]
+
   resources :categories, only: [:create, :destroy, :index, :show]
   resources :answers
 
@@ -20,4 +24,5 @@ Rails.application.routes.draw do
     resources :answers, only: [:show, :edit, :destroy, :create]
     resources :drill_completes, only: [:create]
   end
+
 end
