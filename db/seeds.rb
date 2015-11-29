@@ -17,3 +17,10 @@ end
                 email:      Faker::Internet.email,
                 password:   Faker::Internet.password })
 end
+
+badges = ["Ruby Lover", "Rails Routes", "Javascript Master", "Rails Newbie"]
+badges.sort! {|a, b| a <=> b}
+
+badges.each do |bad|
+  Badge.create(name: bad)
+end
