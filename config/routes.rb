@@ -9,9 +9,13 @@ Rails.application.routes.draw do
   end
   resources :categories, only: [:create, :destroy, :index, :show]
   resources :answers
+
   resources :badges
   get "/your_badges", to: "badges#user_badges", as: :badges_of_user
   get "/leaderboard", to: "leaderboard#leaderboard", as: :leaderboard
+
+  get '/profile', to: "profile#show", as: 'profile'
+
   resources :drills, only: [] do
     resources :answers, only: [:show, :edit, :delete, :create]
     resources :drill_completes, only: [:create]

@@ -61,6 +61,7 @@ class DrillsController < ApplicationController
     @answer = Answer.new
     @answers = @drill.answers
     @drillcomplete = DrillComplete.new
+    @answer = Answer.new
   end
 
   private
