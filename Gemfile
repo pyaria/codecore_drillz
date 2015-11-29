@@ -22,6 +22,9 @@ gem 'simple_form'
 gem 'friendly_id'
 gem "faker"
 gem "rails_admin"
+gem 'delayed_job_active_record'
+gem "delayed_job_web"
+gem "letter_opener"
 
 
 # Use ActiveModel has_secure_password
