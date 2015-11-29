@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :answers
 
   resources :drills, only: [] do
-    resources :answers, only: [:new, :show, :edit, :delete]
+    resources :answers, only: [:new, :show, :edit, :delete, :create]
     resources :drill_completes, only: [:create]
   end
 
