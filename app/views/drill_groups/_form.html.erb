@@ -14,6 +14,10 @@
           :item_wrapper_class => 'inline',
           :checked => true%>
   <div class="buffer"></div>
+    <%= f.association :categories,
+          as: :search, data:
+          {autcomplete_source: categories_path} %>
+  <div class="buffer"></div>
   <%= f.button :submit, "Make a Drill Group", class: "btn btn-primary" %>
 <% end %>
 </div>

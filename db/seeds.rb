@@ -77,3 +77,7 @@ end
 #   :email 			=> "user624534543@admin.com",
 #   :password 	=> "password",
 #   :password_confirmation => "password")
+
+10.times do
+  Category.create(name: Faker::Hacker.noun)
+end
