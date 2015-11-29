@@ -14,3 +14,7 @@
 
 .env
 Procfile
+
+.byebug_history
+
+track.txt
