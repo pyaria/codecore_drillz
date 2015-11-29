@@ -8,6 +8,10 @@
     <div class="well clickable_html">
         <%= dg.name %>
         <%= link_to "Show", drill_group_path(dg), class: "btn btn-primary btn-sm pull-right" %>
+        <%= link_to "Add To My Drills", drill_group_user_drill_groups_path(dg), class: "btn btn-info btn-sm pull-right", method: :post %>
+        <div class="pull-right">
+          score: <%= current_user.get_drill_group_score(dg)%> %
+        </div>
     </div>
   <% end %>
 </div>

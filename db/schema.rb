@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151128235209) do
+ActiveRecord::Schema.define(version: 20151129101526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,9 +34,14 @@ ActiveRecord::Schema.define(version: 20151128235209) do
   end
 
   create_table "badgings", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "drill_group_id"
+    t.integer  "badge_id"
   end
+
+  add_index "badgings", ["badge_id"], name: "index_badgings_on_badge_id", using: :btree
+  add_index "badgings", ["drill_group_id"], name: "index_badgings_on_drill_group_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -90,6 +95,26 @@ ActiveRecord::Schema.define(version: 20151128235209) do
   add_index "drills", ["drill_group_id"], name: "index_drills_on_drill_group_id", using: :btree
   add_index "drills", ["user_id"], name: "index_drills_on_user_id", using: :btree
 
+  create_table "user_badges", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "badge_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "user_badges", ["badge_id"], name: "index_user_badges_on_badge_id", using: :btree
+  add_index "user_badges", ["user_id"], name: "index_user_badges_on_user_id", using: :btree
+
+  create_table "user_drill_groups", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "drill_group_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "user_drill_groups", ["drill_group_id"], name: "index_user_drill_groups_on_drill_group_id", using: :btree
+  add_index "user_drill_groups", ["user_id"], name: "index_user_drill_groups_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -104,6 +129,7 @@ ActiveRecord::Schema.define(version: 20151128235209) do
     t.boolean  "admin",                  default: false
     t.string   "first_name"
     t.string   "last_name"
+    t.integer  "points"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -111,6 +137,8 @@ ActiveRecord::Schema.define(version: 20151128235209) do
 
   add_foreign_key "answers", "drills"
   add_foreign_key "answers", "users"
+  add_foreign_key "badgings", "badges"
+  add_foreign_key "badgings", "drill_groups"
   add_foreign_key "categorizations", "categories"
   add_foreign_key "categorizations", "drill_groups"
   add_foreign_key "drill_completes", "drills"
@@ -119,4 +147,8 @@ ActiveRecord::Schema.define(version: 20151128235209) do
   add_foreign_key "drills", "answers"
   add_foreign_key "drills", "drill_groups"
   add_foreign_key "drills", "users"
+  add_foreign_key "user_badges", "badges"
+  add_foreign_key "user_badges", "users"
+  add_foreign_key "user_drill_groups", "drill_groups"
+  add_foreign_key "user_drill_groups", "users"
 end
