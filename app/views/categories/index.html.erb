@@ -1,6 +1,6 @@
 <h1>All Categories</h1>
 
 <% @categories.each do |c| %>
-  <%= c.name %> <!-- THIS WILL HAVE TO BE A LINK! -->
+  <%= link_to c.name, category_path(c) %>
   <hr>
 <% end %>
