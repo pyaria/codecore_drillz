@@ -9,7 +9,6 @@ class DrillGroupsController < ApplicationController
 
   def create
     redirect_to drill_groups_path, alert: "Access denied." and return unless current_user.admin?
-    byebug
     @dg = DrillGroup.new dg_params
     @dg.user = current_user
     if @dg.save

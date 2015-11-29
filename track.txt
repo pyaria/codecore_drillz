@@ -9,15 +9,6 @@ page: drill name, drill name, drill description. create answer box. All answers.
 ^ can you clean up page please so that it looks better for the admin?
 
 
-tl;dr: stop server, RUN BUNDLE INSTALL
-
-
-added seed for categories
-
-....
-//= require jquery_ujs
-//= require jquery-ui
-....
 
 categories_controller and routes updated
 
