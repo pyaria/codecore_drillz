@@ -58,6 +58,7 @@ class DrillsController < ApplicationController
   end
 
   def show
+    @answer = Answer.new
     @answers = @drill.answers
     @drillcomplete = DrillComplete.new
   end
@@ -65,7 +66,7 @@ class DrillsController < ApplicationController
   private
 
   def drill_params
-    params.require(:drill).permit(:name, :description)
+    params.require(:drill).permit(:name, :description, :points)
   end
 
   def find_drill_group
