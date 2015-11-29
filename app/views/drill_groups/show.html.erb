@@ -20,12 +20,6 @@
   <%= render "/drills/form" %>
 <% end %>
 
-<%= simple_form_for [@dg, @drill] do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.submit class: "btn btn-primary" %>
-<% end %>
-
 
 <h2>Drills</h2>
 <div id="drills">

@@ -21,7 +21,7 @@
   </div>
 <% end %>
 <h1>Try answering this drill!</h1>
-<%= simple_form_for :answer, drill_answers_path(@drill), :method => :post do |answer| %>
-  <%= answer.input :description %>
-  <%= answer.button :submit, "Submit your answer!" %>
+<%= simple_form_for [@drill, @drillcomplete] do |user_answer| %>
+  <%= user_answer.input :new_answer %>
+  <%= user_answer.button :submit, "Submit your answer!" %>
 <% end %>

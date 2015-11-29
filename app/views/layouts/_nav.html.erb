@@ -18,9 +18,17 @@
           <li> <%= link_to "Log In", new_user_session_path %></li>
         <% end %>
       </ul>
-      <% if user_signed_in? %>
-        <p class="navbar-text navbar-right">Signed in as <%= "#{current_user.first_name} #{current_user.last_name}" %></p>
+      <% if user_signed_in? && current_user.admin?%>
+        <p class="navbar-text navbar-right">Signed in as <%= current_user.full_name %></p>
+        <p class="navbar-text navbar-right"><%= link_to "Create Drill Group", new_drill_group_path %> </p>
+        <p class="navbar-text navbar-right"><%= link_to "Badges Created by You", root_path  %></p>
+      <% elsif user_signed_in? && !current_user.admin? %>
+        <p class="navbar-text navbar-right">Signed in as <%= current_user.full_name %></p>
+        <p class="navbar-text navbar-right"><%= link_to "Your Badges", badges_of_user_path  %></p>
       <% end %>
+      <p class="navbar-text navbar-right"><%= link_to "Profile", root_path %> </p>
+      <p class="navbar-text navbar-right"><%= link_to "Categories", categories_path  %></p>
+      <p class="navbar-text navbar-right"><%= link_to "Leaderboard", leaderboard_path  %></p>
     </div>
   </div>
 </nav>

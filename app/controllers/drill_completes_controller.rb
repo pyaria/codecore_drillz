@@ -1,25 +1,36 @@
 class DrillCompletesController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :destroy, :edit, :update]
+  before_action :find_drill, only: [:create]
 
   #//@drill, params [description]
   def create
-    drill_answers = @drill.answers.to_a
-    user_answer = params[:description]
+    user_answer = params[:drill_complete][:new_answer]
+    @drillcomplete = DrillComplete.new
+    drill_answers = @drill.answers
     drill_answers.each do |answer|
-      if answer == user_answer
-        drillcomplete = current_user.drillcompletes.new
+      if answer.description == user_answer
+        drillcomplete = DrillComplete.new
+        drillcomplete.user = current_user
         drillcomplete.drill = @drill
         if drillcomplete.save
-          alert("You got it right!")
-          redirect_to drill_group_drill_path(@drill.drill_group_id, @drill)
+          flash[:alert] = "You got it right!"
+          redirect_to drill_group_drill_path(@drill.drill_group, @drill)
+          return
         else
-          alert("Something's wrong.. please try again later")
+          flash[:alert] = "Something's wrong.. Please submitting again."
+          redirect_to drill_group_drill_path(@drill.drill_group, @drill)
+          return
         end
-      else
-        alert("Wrong answer! Try again :)")
       end
     end
-    drillcomplete = Drillcomplete.new
+    flash[:alert] = "Wrong answer! Try again."
+    redirect_to drill_group_drill_path(@drill.drill_group, @drill)
+  end
 
+  private
+
+  def find_drill
+    @drill = Drill.find params[:drill_id]
   end
 
 end
