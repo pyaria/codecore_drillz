@@ -3,7 +3,7 @@
   <%= f.input :name, hint: "Requires a name" %>
   <%= f.input :description%>
   <div class="inline_check_boxes">
-    <%= collection_check_boxes :badges, :badge_ids, Badge.order(:name), :id, :name  %>
+    <%= f.association :badges, as: :check_boxes  %>
   </div>
 <div class="buffer"></div>
   <%= f.input :level,
