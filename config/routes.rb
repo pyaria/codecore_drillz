@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   root "welcome#index"
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  #mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :drill_groups do
     resources :drills
