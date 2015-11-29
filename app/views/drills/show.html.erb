@@ -24,7 +24,7 @@
 <% end %>
 
 <div id="answers_for_drill">
-<% if @show_answers %>
+<% if @show_answers && current_user.admin? %>
   <h2>All Answers</h2>
   <%= render "/answers/answers_for_a_drill" %>
 <% end %>
