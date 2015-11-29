@@ -1,3 +1,6 @@
 <h1>Welcome to CodeCore Drillz</h1>
-
-<%= link_to "Enter", new_user_session_path  %>
+<% if current_user.present? %>
+<%= link_to "Enter", drill_groups_path %>
+<% else %>
+  <%= link_to "Enter", new_user_session_path  %>
+<% end %>
