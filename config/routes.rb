@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:create, :destroy]
   resources :answers
 
-  resources :drills do
+  resources :drills, only: [] do
     resources :answers, only: [:new, :show, :edit, :delete]
     resources :drill_completes, only: [:create]
   end
