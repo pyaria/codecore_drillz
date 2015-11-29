@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
 
-  has_many :drill_records
-  has_many :drills, through: :drill_records
+
+  has_many :drill_completes
+  has_many :drills, through: :drill_completes
 
 end

@@ -1,7 +1,8 @@
 class Drill < ActiveRecord::Base
+
   has_many :answers
-  has_many :drill_records
-  has_many :driller_users, through: :drill_records, source: :user
+  has_many :drill_completes
+  has_many :driller_users, through: :drill_completes, source: :user
 
   belongs_to :drill_group
   belongs_to :user

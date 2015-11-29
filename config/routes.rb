@@ -1,20 +1,19 @@
 Rails.application.routes.draw do
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  #mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  devise_for :users, :controllers => { registrations: 'registrations' }
   resources :drill_groups do
-    resources :drills, only: [:show, :edit, :update, :create]
+    resources :drills
   end
 
   root "welcome#index"
   resources :categories, only: [:create, :destroy]
   resources :answers
+
   resources :drills do
-    resources :answers
+    resources :answers, only: [:new, :show, :edit, :delete]
     resources :drill_completes, only: [:create]
   end
-
-  devise_for :users, controllers: {
-    registrations: 'users/registrations',
-    sessions: 'users/sessions'
-  }
 
 end

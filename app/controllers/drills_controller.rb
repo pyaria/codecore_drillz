@@ -9,7 +9,6 @@ class DrillsController < ApplicationController
     @drill = Drill.new drill_params
     @drill.drill_group = @dg
     @drill.user = current_user
-
     respond_to do |format|
       if @drill.save
         format.html { redirect_to drill_group_path(@dg), notice: "Drill created successfully!" }
