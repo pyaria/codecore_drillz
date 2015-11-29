@@ -8,6 +8,7 @@ class DrillGroup < ActiveRecord::Base
   has_many :user_drill_groups, dependent: :destroy
   has_many :users, through: :user_drill_groups
 
+
   has_many :categorizations, dependent: :destroy
   has_many :categories, through: :categorizations
 
