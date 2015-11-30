@@ -45,7 +45,8 @@ group :development, :test do
   gem 'rspec-rails'
 
   gem 'factory_girl_rails'
-
+  
+  #gem 'shoulda-matchers', '~> 3.0', '>= 3.0.1'
 end
 
 group :development do
@@ -55,7 +56,7 @@ group :development do
   gem 'awesome_print'
   gem 'interactive_editor'
   gem 'hirb'
-
+ 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end

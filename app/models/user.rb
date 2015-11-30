@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -38,6 +39,14 @@ class User < ActiveRecord::Base
     (drills_complete.to_f / drill_group.drills.count * 100).round(0)
   end
 
-
-
+# not tested yet, will be tested when seed file ready
+  def points
+    drills.inject{|sum,drill| sum + drill.point}
+  end
 end
+
+
+
+
+
+

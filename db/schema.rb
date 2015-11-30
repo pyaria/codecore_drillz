@@ -95,6 +95,12 @@ ActiveRecord::Schema.define(version: 20151129212026) do
   add_index "drills", ["drill_group_id"], name: "index_drills_on_drill_group_id", using: :btree
   add_index "drills", ["user_id"], name: "index_drills_on_user_id", using: :btree
 
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "user_badges", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "badge_id"
@@ -129,12 +135,14 @@ ActiveRecord::Schema.define(version: 20151129212026) do
     t.boolean  "admin",                  default: false
     t.string   "first_name"
     t.string   "last_name"
+    t.integer  "role_id"
     t.integer  "points"
     t.string   "profile_pic"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
 
   add_foreign_key "answers", "drills"
   add_foreign_key "answers", "users"
@@ -152,4 +160,5 @@ ActiveRecord::Schema.define(version: 20151129212026) do
   add_foreign_key "user_badges", "users"
   add_foreign_key "user_drill_groups", "drill_groups"
   add_foreign_key "user_drill_groups", "users"
+  add_foreign_key "users", "roles"
 end
