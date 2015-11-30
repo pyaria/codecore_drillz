@@ -1,18 +1,4 @@
 <h1 id="title">My Drills</h1>
-<div class="col-md-8 col-md-offset-2">
-  <% @user_drill_groups.each do |udg| %>
-    <div class="well clickable_html">
-        <% dg = udg.drill_group %>
-        <%= dg.name %>
-        <%= link_to "Start", drill_group_path(dg), class: "btn btn-primary btn-sm pull-right" %>
-        <%= link_to "Remove", drill_group_user_drill_group_path(dg, udg), class: "btn btn-warning btn-sm pull-right", method: :delete %>
-        <div class="pull-right">
-          score: <%= current_user.get_drill_group_score(dg)%> 
-        </div>
-    </div>
-  <% end %>
-</div>
-<br>
 
 <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a id="title" href="#home" aria-controls="home" role="tab" data-toggle="tab">My Drill Groups</a></li>
@@ -21,7 +7,21 @@
 
   <!-- Tab panes -->
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="home">ashdofhasdfhasdf</div>
+    <div role="tabpanel" class="tab-pane active" id="home">
+        <% @user_drill_groups.each do |udg| %>
+          <div class="well clickable_html">
+              <% dg = udg.drill_group %>
+              <%= dg.name %>
+              <%= link_to "Start", drill_group_path(dg), class: "btn btn-primary btn-sm pull-right" %>
+              <%= link_to "Remove", drill_group_user_drill_group_path(dg, udg), class: "btn btn-warning btn-sm pull-right", method: :delete %>
+              <div class="pull-right">
+                score: <%= current_user.get_drill_group_score(dg)%>
+              </div>
+          </div>
+        <% end %>
+
+
+    </div>
     <div role="tabpanel" class="tab-pane" id="profile">
       <% @all_drill_groups.each do |drill_group| %>
         <div class="well"><%= drill_group.name %></div>
@@ -29,4 +29,17 @@
     </div>
   </div>
 
+</div>
+
+<div class="col-md-8 col-md-offset-2">
+  <% @all_drill_groups.each do |dg| %>
+    <div class="well clickable_html">
+        <%= dg.name %>
+        <%= link_to "Show", drill_group_path(dg), class: "btn btn-primary btn-sm pull-right" %>
+        <%= link_to "Add To My Drills", drill_group_user_drill_groups_path(dg), class: "btn btn-info btn-sm pull-right", method: :post %>
+        <div class="pull-right">
+          score: <%= current_user.get_drill_group_score(dg)%> %
+        </div>
+    </div>
+  <% end %>
 </div>

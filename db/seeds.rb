@@ -4,25 +4,25 @@
 #   DrillGroup.create!({name: Faker::Hacker.noun})
 # end
 #
-10.times do
-	Drill.create({name: Faker::Company.bs,
-                description:  Faker::Lorem.paragraph,
-                points: 10 })
-
+# 10.times do
+# 	Drill.create({name: Faker::Company.bs,
+#                 description:  Faker::Lorem.paragraph,
+#                 points: 10 })
 #
-  DrillGroup.create!({name: Faker::Hacker.noun})
-
-  user = User.find(1)
-  dg = DrillGroup.create({name: Faker::Hacker.noun,
-                          description: Faker::Hacker.say_something_smart,
-                          user_id: user.id
-                          })
-  answer = Answer.create({description: Faker::Hacker.say_something_smart})
-  drill = Drill.create({name: Faker::Company.bs,
-                        description:  Faker::Lorem.paragraph, answer_id: answer.id,
-                        drill_group_id: dg.id })
+# #
+#   DrillGroup.create!({name: Faker::Hacker.noun})
 #
-end
+#   user = User.find(1)
+#   dg = DrillGroup.create({name: Faker::Hacker.noun,
+#                           description: Faker::Hacker.say_something_smart,
+#                           user_id: user.id
+#                           })
+#   answer = Answer.create({description: Faker::Hacker.say_something_smart})
+#   drill = Drill.create({name: Faker::Company.bs,
+#                         description:  Faker::Lorem.paragraph, answer_id: answer.id,
+#                         drill_group_id: dg.id })
+#
+# end
 #
 # 10.times do
 #   User.create({ first_name:   Faker::Name.first_name,
@@ -41,12 +41,12 @@ end
 #                 password:   Faker::Internet.password })
 # end
 
-# badges = ["Ruby Lover", "Rails Routes", "Javascript Master", "Rails Newbie"]
-# #badges.sort! {|a, b| a <=> b}
-#
-# badges.each do |badge|
-#   Badge.create(name: badge)
-# end
+badges = ["Ruby Lover", "Rails Routes", "Javascript Master", "Rails Newbie"]
+#badges.sort! {|a, b| a <=> b}
+
+badges.each do |badge|
+  Badge.create(name: badge)
+end
 
 # 10.times do
 # 	answer = Answer.create!({description: Faker::Hacker.say_something_smart})
