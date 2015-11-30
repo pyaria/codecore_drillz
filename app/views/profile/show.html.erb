@@ -9,9 +9,7 @@
     <h4>Badges:</h4>
     <div>
     <% current_user.badges.each do |badge| %>
-      <div class="badges">
-            <img src="<%= asset_path badge.name.gsub(' ', '_').downcase %>"/>
-      </div>
+      <div><%= image_tag(badge.image_url(:small))  %></div>
     <% end %>
     </div>
     <div style="margin: 40px;"></div>

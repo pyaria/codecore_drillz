@@ -1,5 +1,10 @@
 <h1>Badges</h1>
 
+<div>
+<%= link_to "New", new_badge_path, class: "btn btn-default" %>
+</div>
+<hr>
+
 <% @badges.each do |b| %>
   <%= link_to b.name, badge_path(b) %>&nbsp&nbsp&nbsp
   <% if b.image.present? %>

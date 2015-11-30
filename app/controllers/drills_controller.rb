@@ -34,7 +34,7 @@ class DrillsController < ApplicationController
     redirect_to drill_group_path(@dg), alert: "Access denied." and return unless can? :update, @drill
     respond_to do |format|
       if @drill.update(drill_params)
-        format.html { redirect_to drill_group_path(@dg), notice: "Drill updated!" }
+        format.html { redirect_to drill_group_drill_path(@dg, @drill), notice: "Drill updated!" }
         format.js { render :update_success }
       else
         @drills = @dg.drills.order(created_at: :desc)
@@ -63,7 +63,6 @@ class DrillsController < ApplicationController
     @answer = Answer.new
     @answers = @drill.answers
     @drillcomplete = DrillComplete.new
-    @answer = Answer.new
   end
 
   private

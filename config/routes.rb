@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, :controllers => { registrations: 'registrations' }
-  resources :drill_groups, only: [:new, :edit, :destroy, :create, :index]
+  resources :drill_groups, only: [:new, :edit, :update, :destroy, :create, :index]
   resources :drill_groups, only: [:show] do
     resources :user_drill_groups, only: [:create, :destroy]
     resources :drills

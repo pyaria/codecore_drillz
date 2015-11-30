@@ -13,9 +13,9 @@
   <% else %>
     <% level = "Advanced" %>
   <% end %>
+  <%= level %>
 
-  <footer>Created by: <cite title="Source Title"><%= @dg.user.first_name %> <%= @dg.user.last_name %></cite></footer>
-  <div class="buffer" style="height: 40px;">  
+  <div class="buffer" style="height: 40px;">
 
   <div>
     <% if @categories.any? %>
@@ -36,7 +36,7 @@
     <% @dg.badges.each do |badge| %>
       <!-- <div class="label label-default"> -->
       <div class="badges">
-        <img src="<%= asset_path badge.name.gsub(' ', '_').downcase %>"/>
+        <div> <%= image_tag(badge.image_url(:small)) %> </div>
       </div>
     <% end %>
     <br><br>
