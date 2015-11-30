@@ -14,7 +14,6 @@ class DrillGroupsController < ApplicationController
     category_names = params[:drill_group][:category_ids].split(", ")
     category_ids = []
     category_names.each do |category|
-      Category.create(name: category) unless Category.find_by_name(category)
       category_ids.push(Category.find_by_name(category).id)
     end
     @dg.category_ids = category_ids
@@ -28,8 +27,8 @@ class DrillGroupsController < ApplicationController
   def show
     @dg = DrillGroup.find params[:id]
     @drills = @dg.drills.order(created_at: :desc)
-    @categories = @dg.categories
     @drill = Drill.new
+    @categories = @dg.categories
   end
 
   def index
