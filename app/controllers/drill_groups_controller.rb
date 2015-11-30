@@ -42,7 +42,15 @@ class DrillGroupsController < ApplicationController
 
   def update
     redirect_to drill_group_path(@dg), alert: "Access denied." and return unless can? :update, @dg
-    if @dg.update drill_group_params
+    category_names = params[:drill_group][:category_ids].split(", ")
+    category_ids = []
+    category_names.each do |category|
+      Category.create(name: category) unless Category.find_by_name(category)
+      category_ids.push(Category.find_by_name(category).id)
+    end
+    if @dg.update dg_params
+      @dg.category_ids = category_ids
+      @dg.save
       redirect_to(drill_group_path(@dg))
     else
       render :edit

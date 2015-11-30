@@ -10,6 +10,10 @@ class BadgesController < ApplicationController
       # image
     # end
 
+    def new
+      @badge = Badge.new
+    end
+
     def user_badges
       @badges = current_user.badges
     end

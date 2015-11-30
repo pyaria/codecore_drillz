@@ -132,7 +132,6 @@ ActiveRecord::Schema.define(version: 20151130034521) do
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "points"
-    t.string   "image"
     t.string   "profile_pic"
   end
 
