@@ -1,6 +1,4 @@
 <h1>Drill: <%= @drill.name %></h1>
-
-<p><%= @drill.name %></p>
 <p><%= @drill.description %></p>
 
 <!-- FOR ADMIN USERS ONLY -->
@@ -8,24 +6,36 @@
   <%= link_to "Delete", drill_group_drill_path(@dg, @drill), method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?", disable_with: "deleting..."}%>
   <%= link_to "Edit", edit_drill_group_drill_path(@dg, @drill), class: "btn btn-info", id: "edit_btn_#{dom_id(@drill)}"%>
   <hr>
-  <!-- RENDER NEW ANSWER FORM -->
-  <%= render "/answers/form" %>
 
-  <h1>All Answers</h1>
   <div id="answers_for_drill">
-    <%= render "/answers/answers_for_a_drill" %>
+    <% if @drill.answers.present? %>
+      <h2>Possible Answers</h2>
+      <%= render "/answers/answers_for_a_drill" %>
+      <hr>
+      <h2>Add more answers!</h2>
+      <%= render "/answers/form" %>
+    <% else %>
+      <h2>No answers for this drill yet. Please create some answers!</h2>
+      <%= render "/answers/form" %>
+    <% end %>
   </div>
 
+  <h1>Test your answer for this drill</h1>
+
+<% else %>
+
+  <h1>Try answering this drill!</h1> <!-- It would be nice to have a note or something here tha tonly the admin will see that tells them that below is what the user will see. Not important -->
+
 <% end %>
-<h1>Try answering this drill!</h1>
+
 <%= simple_form_for [@drill, @drillcomplete] do |user_answer| %>
   <%= user_answer.input :new_answer %>
   <%= user_answer.button :submit, "Submit your answer!" %>
 <% end %>
 
 <div id="answers_for_drill">
-<% if @show_answers && current_user.admin? %>
-  <h2>All Answers</h2>
-  <%= render "/answers/answers_for_a_drill" %>
-<% end %>
+  <% if @show_answers %>
+    <h2>Since you got it right... here are the other answers!</h2>
+    <%= render "/answers/answers_for_a_drill" %>
+  <% end %>
 </div>
