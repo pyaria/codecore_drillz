@@ -1,5 +1,12 @@
 class RegistrationsController < Devise::RegistrationsController
 
+  def create
+    super do
+      resource.points = 0
+      resource.save
+    end
+  end
+
   private
 
   def sign_up_params
