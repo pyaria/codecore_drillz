@@ -9,7 +9,7 @@ class UserDrillGroupsController < ApplicationController
         format.html { redirect_to drill_groups_path, notice: "Added to My Drills!" }
         format.js { render :create_success }
       else
-        format.html { redirect_to drill_groups_path, alert: "Error Occured!" }
+        format.html { redirect_to drill_groups_path, alert: "Already Added!" }
       end
     end
   end
@@ -26,6 +26,7 @@ class UserDrillGroupsController < ApplicationController
   end
 
   def index
+    @all_drill_groups = DrillGroup.all
     @user_drill_groups = current_user.user_drill_groups
   end
 
