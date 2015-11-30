@@ -12,10 +12,7 @@ answer_id field in Drill model not necessary.
 
 
 ======
-cleaned up drill show page, admin vs general user specific messages and views.
-added ruby logic:
-  for creating category when creating drill_group if category not in database
-  drill_group not shown in index when no drills exist unless admin.
+
 
 =======
 telling me that "this is not the point" is very dismissive when I am responding to you.

@@ -33,5 +33,9 @@
   <%= user_answer.button :submit, "Submit your answer!" %>
 <% end %>
 
-  <%# if @show_answers && current_user.admin? && @drill.answers.present? %>
-  <%# end %>
+<div id="answers_for_drill">
+  <% if @show_answers %>
+    <h2>Since you got it right... here are the other answers!</h2>
+    <%= render "/answers/answers_for_a_drill" %>
+  <% end %>
+</div>
