@@ -9,7 +9,7 @@ class UserDrillGroupsController < ApplicationController
         format.html { redirect_to drill_groups_path, notice: "Added to My Drills!" }
         format.js { render :create_success }
       else
-        format.html { redirect_to drill_groups_path, alert: "Error Occured!" }
+        format.html { redirect_to drill_groups_path, alert: "Already Added!" }
       end
     end
   end
