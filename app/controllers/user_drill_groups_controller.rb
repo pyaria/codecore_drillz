@@ -6,10 +6,10 @@ class UserDrillGroupsController < ApplicationController
     @udg.drill_group = @dg
     respond_to do |format|
       if @udg.save
-        format.html { redirect_to drill_groups_path, notice: "Added to My Drills!" }
+        format.html { redirect_to user_drill_groups_path, notice: "Added to My Drills!" }
         format.js { render :create_success }
       else
-        format.html { redirect_to drill_groups_path, alert: "Already Added!" }
+        format.html { redirect_to user_drill_groups_path, alert: "Already Added!" }
       end
     end
   end
@@ -20,7 +20,7 @@ class UserDrillGroupsController < ApplicationController
     @udg      = current_user.user_drill_groups.find params[:id]
     @udg.destroy
     respond_to do |format|
-      format.html { redirect_to drill_group_path(@dg), notice: "Removed from My Drills!" }
+      format.html { redirect_to user_drill_groups_path, notice: "Removed from My Drills!" }
       format.js { render }
     end
   end
