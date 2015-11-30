@@ -15,7 +15,7 @@
     <div class="box">
       <h1 id="title" style="font-size: 40px;">Your Points:</h1>
       <hr>
-      <h1 id="title" style="font-size: 80px;"><%= @points %></h1>
+      <h1 id="title" style="font-size: 80px;"><%= @points == nil ? 0 : @points %></h1>
     </div>
 </div>
 
