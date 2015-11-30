@@ -2,6 +2,14 @@
   <h3>Create a new answer</h3>
   <%= simple_form_for [@drill, @answer] do |answer| %>
     <%= answer.input :description %>
+    <div class="buffer"></div>
+      <%= answer.input :type_of,
+              :collection => [[0, "Exact Match"], [1, "Regular Expression"], [2, "Test (RSpec)"]],
+              :label_method => :last,
+              :value_method => :first,
+              :as => :radio_buttons,
+              :item_wrapper_class => 'inline',
+              :checked => true%>
     <%= answer.submit(class: "btn btn-primary", data: {disable_with: "Saving..."}) %>
   <% end %>
 </div>

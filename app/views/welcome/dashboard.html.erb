@@ -1,0 +1,26 @@
+<div class="container">
+  <div id="fourty" class="buffer"></div>
+  <div class="flex-keep-center">
+    <div>
+      <h1 id="title"><%= @user.first_name.capitalize%> <%= @user.last_name.capitalize%></h1>
+    </div>
+  </div>
+<div id="thirty" class="buffer"></div>
+  <div class="flex-keep-center">
+      <%= link_to "Start Drilling!", user_drill_groups_path, class: "myButton"%>
+  </div>
+<div id="fourty" class="buffer"></div>
+
+<div class="flex-keep-center">
+    <div class="box">
+      <h1 id="title" style="font-size: 40px;">Your Points:</h1>
+      <hr>
+      <h1 id="title" style="font-size: 80px;"><%= @points == nil ? 0 : @points %></h1>
+    </div>
+    <div class=col-buffer-2></div>
+    <div class="box">
+      <h1 id="title" style="font-size: 40px;">Your Badges:</h1>
+      <hr>
+      <h1 id="title" style="font-size: 80px;"><%= @badges.count %></h1>
+    </div>
+</div>

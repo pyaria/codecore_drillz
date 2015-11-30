@@ -1,0 +1,19 @@
+20151129:
+/admin/user/new => every field is optional?
+
+/users (erroneous sign in) => error.
+Also weird space showing up.
+
+@hong - admin makes a drill_group. Admin makes drills within drill_group. Admin then makes answers for drill.
+page: drill name, drill name, drill description. create answer box. All answers. Try answering this drill!
+^ can you clean up page please so that it looks better for the admin?
+
+answer_id field in Drill model not necessary.
+
+
+======
+
+
+=======
+telling me that "this is not the point" is very dismissive when I am responding to you.
+interrupting me when I'm talking is demeaning and disrespectful.

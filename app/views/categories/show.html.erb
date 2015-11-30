@@ -1,0 +1,10 @@
+<h1>Category: <%= @category.name %></h1>
+
+<h2>Drill groups:</h2>
+
+<% @category.drill_groups.each do |dg| %>
+
+  <hr>
+  <h3><%= link_to dg.name, drill_group_path(dg) %></h3>
+
+<% end %>

@@ -9,7 +9,16 @@ div.buffer {
   text-align: center;
 }
 
-.inline_check_boxes label {
-  margin-left: 5px;
-  margin-right: 25px;
+.badges {
+  display: inline-block;
+  img {
+    display: inline-block;
+    width: 50px;
+  }
+}
+div.badge-checkbox input[type="checkbox"] + img {
+  opacity: 0.4;
+}
+div.badge-checkbox input[type="checkbox"]:checked + img{
+    opacity: 1;
 }

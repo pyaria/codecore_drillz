@@ -14,3 +14,9 @@
 
 .env
 Procfile
+
+.byebug_history
+
+track.txt
+
+/public/uploads

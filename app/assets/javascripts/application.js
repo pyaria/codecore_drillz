@@ -12,6 +12,17 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+$(document).ready(function() {
+  $('#myTabs a').click(function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+  });
+
+  $('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').focus()
+})
+});
