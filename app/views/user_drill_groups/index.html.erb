@@ -5,12 +5,16 @@
   <ul class="nav nav-tabs" role="tablist">
       <li role="presentation" class="active"><a id="title" href="#home" aria-controls="home" role="tab" data-toggle="tab">My Drill Groups</a></li>
       <li role="presentation"><a id="title" href="#profile" aria-controls="profile" role="tab" data-toggle="tab">All Drill Groups</a></li>
+      <% if current_user.admin? %>
+        <li role="presentation"><a id="title" href="#create-drill-group" aria-controls="create-drill-group" role="tab" data-toggle="tab">Create a Drill Group</a></li>
+      <% end %>
   </ul>
 
 
     <div class="tab-content">
       <div role="tabpanel" class="tab-pane active" id="home">
           <% @user_drill_groups.each do |udg| %>
+          <br>
             <div class="well clickable_html">
                 <% dg = udg.drill_group %>
                 <%= dg.name %>
@@ -25,19 +29,25 @@
 
       </div>
       <div role="tabpanel" class="tab-pane" id="profile">
-
           <% @all_drill_groups.each do |dg| %>
-            <div class="well clickable_html">
-                <%= dg.name %>
-                <%= link_to "Show", drill_group_path(dg), class: "btn btn-primary btn-sm pull-right" %>
-                <%= link_to "Add to this Drill Group!", drill_group_user_drill_groups_path(dg), class: "btn btn-info btn-sm pull-right", method: :post %>
-                <br>
-                <br>
-                <div>
-                  Score: <%= current_user.get_drill_group_score(dg)%> %
-                </div>
+            <br>
+            <div class="well">
+              <%= dg.name %>
+              <%= link_to "Show", drill_group_path(dg), class: "btn btn-primary btn-sm pull-right", id: "show-drill-group" %>
+              <%= link_to "Add this to my Drill Groups!", drill_group_user_drill_groups_path(dg), class: "btn btn-info btn-sm pull-right margin-right", method: :post %>
+              <br>
+              <br>
+              <div>
+                Score: <%= current_user.get_drill_group_score(dg)%> %
+              </div>
             </div>
-          <% end %>
+            <% end %>
+
+      </div>
+
+      <div role="tabpanel" class="tab-pane" id="create-drill-group">
+
+          <%= render "/drill_groups/form" %>
 
       </div>
     </div>
