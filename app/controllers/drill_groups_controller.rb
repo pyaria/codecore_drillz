@@ -11,6 +11,12 @@ class DrillGroupsController < ApplicationController
     redirect_to drill_groups_path, alert: "Access denied." and return unless current_user.admin?
     @dg = DrillGroup.new dg_params
     @dg.user = current_user
+    category_names = params[:drill_group][:category_ids].split(", ")
+    category_ids = []
+    category_names.each do |category|
+      category_ids.push(Category.find_by_name(category).id)
+    end
+    @dg.category_ids = category_ids
     if @dg.save
       redirect_to drill_group_path(@dg)
     else

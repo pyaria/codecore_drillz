@@ -1,17 +1,43 @@
 <h1 class="page-header">All Drill Groups</h1>
-<% if user_signed_in? && current_user.admin %>
-  <%= link_to("New Drill Group", new_drill_group_path, class: "btn btn-primary") %>
-<% end %>
-
-<div class="col-md-8 col-md-offset-2">
-  <% @drill_groups.each do |dg| %>
-    <div class="well clickable_html">
-        <%= dg.name %>
-        <%= link_to "Show", drill_group_path(dg), class: "btn btn-primary btn-sm pull-right" %>
-        <%= link_to "Add To My Drills", drill_group_user_drill_groups_path(dg), class: "btn btn-info btn-sm pull-right", method: :post %>
-        <div class="pull-right">
-          score: <%= current_user.get_drill_group_score(dg)%> %
-        </div>
-    </div>
+  <% if user_signed_in? && current_user.admin %>
+    <%= link_to("New Drill Group", new_drill_group_path, class: "btn btn-primary") %>
   <% end %>
-</div>
+
+  <div class="col-md-8 col-md-offset-2">
+    <% @drill_groups.each do |dg| %>
+      <div class="well clickable_html">
+          <%= dg.name %>
+          <%= link_to "Show", drill_group_path(dg), class: "btn btn-primary btn-sm pull-right" %>
+          <%= link_to "Add To My Drills", drill_group_user_drill_groups_path(dg), class: "btn btn-info btn-sm pull-right", method: :post %>
+          <div class="pull-right">
+            score: <%= current_user.get_drill_group_score(dg)%> %
+          </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="container col-md-4">
+    <div class="list-group">
+      <a href="<%= new_drill_group_path %>" class="list-group-item col-md-12">
+        <h4 class="list-group-item-heading">Create a New Drill Group</h4>
+        <p class="list-group-item-text">Create a Drill Group for your Homies!</p>
+      </a>
+
+      <a href="<%= new_drill_group_path %>" class="list-group-item col-md-12">
+        <h4 class="list-group-item-heading">Create a New Drill Group</h4>
+        <p class="list-group-item-text">Create a Drill Group for your Homies!</p>
+      </a>
+    </div>
+  </div>
+
+<!-- <% if user_signed_in? && current_user.admin?%>
+  <p class="navbar-text navbar-right"><%#= link_to "Create Drill Group", new_drill_group_path %> </p>
+  <p class="navbar-text navbar-right"><%#= link_to "Badges Created by You", root_path  %></p>
+<% elsif user_signed_in? && !current_user.admin? %>
+  <p class="navbar-text navbar-right">Signed in as <%= current_user.full_name %></p>
+  <p class="navbar-text navbar-right"><%#= link_to "Your Badges", badges_of_user_path  %></p>
+<% end %> -->
+    <!-- <li> <%#= link_to("Profile", profile_path) %></li> -->
+<!-- <p class="navbar-text navbar-right"><%#= link_to "Profile", root_path %> </p>
+<p class="navbar-text navbar-right"><%#= link_to "Categories", categories_path  %></p>
+<p class="navbar-text navbar-right"><%#= link_to "Leaderboard", leaderboard_path  %></p> -->

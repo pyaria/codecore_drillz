@@ -1,3 +1,19 @@
 // Place all the styles related to the profile controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.flex-keep-center {
+  display: flex;
+  justify-content: center;
+}
+
+.box {
+  height: 230px;
+  width: 450px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.points {
+  text-align: center;
+  font-size: 80px;
+}

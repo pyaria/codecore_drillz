@@ -26,6 +26,7 @@ class UserDrillGroupsController < ApplicationController
   end
 
   def index
+    @all_drill_groups = DrillGroup.all
     @user_drill_groups = current_user.user_drill_groups
   end
 

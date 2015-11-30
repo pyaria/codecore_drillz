@@ -1,4 +1,4 @@
-#
+
 # 10.times do
 #
 #   DrillGroup.create!({name: Faker::Hacker.noun})
@@ -6,8 +6,10 @@
 #
 # 10.times do
 # 	Drill.create({name: Faker::Company.bs,
-#                 description:  Faker::Lorem.paragraph })
+#                 description:  Faker::Lorem.paragraph,
+#                 points: 10 })
 #
+# #
 #   DrillGroup.create!({name: Faker::Hacker.noun})
 #
 #   user = User.find(1)
@@ -51,9 +53,9 @@ end
 # 	Drill.create!({name: Faker::Company.bs,
 #                	 description:  Faker::Lorem.paragraph, answer_id: answer.id })
 # end
-
-
-
+#
+#
+#
 # admin = User.create!(
 # 	:first_name => "master",
 # 	:last_name	=> "bot",
