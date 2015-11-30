@@ -1,0 +1,13 @@
+<h1>Badge: <%= @badge.name %></h1>
+<div class="col-md-4">
+
+</div>
+<div class="col-md-4">
+  <% if @badge.image.present? %>
+    <%= image_tag @badge.image.url(:small) %>
+  <% end %>
+
+</div>
+<div class="col-md-4">
+
+</div>

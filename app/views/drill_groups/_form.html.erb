@@ -5,8 +5,7 @@
 
   <div class="badge-checkbox">
   <%= f.association :badges, :as => :check_boxes, item_wrapper_tag: :div, item_wrapper_class: "badges", :collection => Badge.order(:name),
-  :label => false, :inline_label => false, :label_method => lambda { |b| url_image = asset_path b.name.gsub(' ', '_').downcase
-   "#{image_tag(url_image)}".html_safe } %>
+  :label => false, :inline_label => false, :label_method => lambda { |b|  image_tag(b.image)  } %>
   </div>
 
 <div class="buffer"></div>

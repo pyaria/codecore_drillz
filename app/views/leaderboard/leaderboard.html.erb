@@ -1,19 +1,35 @@
 <div class="row">
   <div class="col-md-8">
-    <h1>Leaderboard</h1>
-  <% @users.each do |user| %>
-
-    <hr>
-    <%= user.full_name %> ---- <%= user.points %> points / <%= user.badges.count %> badges
-
-  <% end %>
+    <h1 id="title" style="font-size: 40px;">Leaderboard</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr><th>User Name</th> <th style="text-align: center;">Points</th>
+            <th style="text-align: center;">Badges</th> </tr> </thead>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.full_name %></td>
+          <td style="text-align: center;"><%= user.points.to_i + 0 %></td>
+          <td style="text-align: center;"><%= user.badges.count.to_i + 0 %></td>
+        </tr>
+      <% end %>
+    </table>
   </div>
 
-  <div class="col-md-4">
-    <div class="col-md-offset-6">
-      <h1>You</h1>
-      <p><%= current_user.points %> points</p>
-      <p><%= current_user.badges.count %> badges</p>
+  <div class="col-md-4" style="text-align: center;">
+    <div class="col-md-offset-4">
+      <h1 id="title" style="font-size: 40px;">Dude</h1>
+      <img src='<%="#{current_user.profile_pic.url(:medium)}"%>' >
+      <div style="margin: 15px;">
+        <div >
+          <p><%=current_user.points.to_i + 0%> points</p>
+          <p><%=current_user.badges.count.to_i + 0%> badges </p>
+        </div>
+        <div class="badges">
+          <% current_user.badges.each do |bdg| %>
+              <img src="<%= asset_path bdg.name.gsub(' ', '_').downcase %>"/>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

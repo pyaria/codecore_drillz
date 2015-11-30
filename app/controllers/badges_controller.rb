@@ -7,6 +7,7 @@ class BadgesController < ApplicationController
     #   t.datetime "created_at", null: false
     #   t.datetime "updated_at", null: false
     #   t.string   "name"
+      # image
     # end
 
     def user_badges
@@ -20,7 +21,7 @@ class BadgesController < ApplicationController
     def create
       @badge = Badge.new badge_params
       if @badge.save
-        redirect_to badge_path badge
+        redirect_to badge_path @badge
       else
         render :new
       end
@@ -34,10 +35,22 @@ class BadgesController < ApplicationController
     def show
     end
 
+    def edit
+
+    end
+
+    def update
+      if @badge.update badge_params
+        redirect_to badge_path @badge
+      else
+        render :new
+      end
+    end
+
     private
 
       def badge_params
-        params.require(:badge).permit([:name])
+        params.require(:badge).permit([:name, :image])
       end
 
       def find_badge

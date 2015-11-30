@@ -13,6 +13,9 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
+          <% if current_user.admin? %>
+            <%= link_to "Badges", badges_path, class:"nav navbar-brand" %>
+          <% end %>
           <%= link_to "Drill Groups", user_drill_groups_path(current_user), class:"nav navbar-brand" %>
           <%= link_to "Profile", profile_path, class:"nav navbar-brand" %>
         <% end %>
