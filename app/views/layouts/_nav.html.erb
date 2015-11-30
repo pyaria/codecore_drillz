@@ -2,9 +2,10 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <a class="navbar-brand" href="<%= root_path %>" ><i class='glyphicon glyphicon-home'></i> Home</a>
-      <a class="navbar-brand" href="<%= leaderboard_path %>">Leaderboards</a>
-
+      <a class="navbar-brand" href="<%= root_path %>" >Home</a>
+      <% if user_signed_in? %>
+        <a class="navbar-brand" href="<%= leaderboard_path %>">Leaderboards</a>
+      <% end %>
     </div>
 
 <!-- Collect the nav links, forms, and other content for toggling -->
