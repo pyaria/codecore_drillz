@@ -1,10 +1,18 @@
 <h1 class="page-header">All Drill Groups</h1>
   <% if user_signed_in? && current_user.admin %>
-    <%= link_to("New Drill Group", new_drill_group_path, class: "btn btn-primary") %>
+    <div class="container col-md-4">
+      <div class="list-group">
+        <a href="<%= new_drill_group_path %>" class="list-group-item col-md-12">
+          <h4 class="list-group-item-heading">Create a New Drill Group</h4>
+          <p class="list-group-item-text">Create a Drill Group for your Homies!</p>
+        </a>
+      </div>
+    </div>
   <% end %>
 
-  <div class="col-md-8 col-md-offset-2">
-    <% @drill_groups.each do |dg| %>
+<div class="col-md-8 col-md-offset-2">
+  <% @drill_groups.each do |dg| %>
+    <% if dg.drills.any? || current_user.admin %>
       <div class="well clickable_html">
           <%= dg.name %>
           <%= link_to "Show", drill_group_path(dg), class: "btn btn-primary btn-sm pull-right" %>
@@ -14,21 +22,9 @@
           </div>
       </div>
     <% end %>
-  </div>
+  <% end %>
+</div>
 
-  <div class="container col-md-4">
-    <div class="list-group">
-      <a href="<%= new_drill_group_path %>" class="list-group-item col-md-12">
-        <h4 class="list-group-item-heading">Create a New Drill Group</h4>
-        <p class="list-group-item-text">Create a Drill Group for your Homies!</p>
-      </a>
-
-      <a href="<%= new_drill_group_path %>" class="list-group-item col-md-12">
-        <h4 class="list-group-item-heading">Create a New Drill Group</h4>
-        <p class="list-group-item-text">Create a Drill Group for your Homies!</p>
-      </a>
-    </div>
-  </div>
 
 <!-- <% if user_signed_in? && current_user.admin?%>
   <p class="navbar-text navbar-right"><%#= link_to "Create Drill Group", new_drill_group_path %> </p>

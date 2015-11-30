@@ -12,6 +12,18 @@
 <p>Created by: <%= @dg.user.first_name %> <%= @dg.user.last_name %></p>
 
 <div>
+  <% if @categories.any? %>
+    <p>This drill group belongs to <%= pluralize(@categories.count, "category") %>:
+    <% @categories.each do |category| %>
+      <%= category.name %>
+    <% end %>
+    </p>
+  <% else %>
+    <p>This drill group doesn't belong to any categories</p>
+  <% end %>
+</div>
+
+<div>
 <% if @dg.badges.any? %>
   <br>
   <p>Badges you can win on completion:</p>
@@ -34,15 +46,16 @@
   <%= render 'drills/form' %>
 <% end %>
 
+<% if @drills.any? %>
+  <h2>Drills</h2>
+  <div id="drills">
+    <% @drills.each do |drill| %>
+      <div class="well" id="<%= dom_id(drill) %>">
+      <%= drill.name %>
+      <%= drill.description %>
+      <%= link_to "Show", drill_group_drill_path(@dg, drill), class: "btn btn-primary btn-sm pull-right" %>
+      </div>
 
-<h2>Drills</h2>
-<div id="drills">
-  <% @drills.each do |drill| %>
-    <div class="well" id="<%= dom_id(drill) %>">
-    <%= drill.name %>
-    <%= drill.description %>
-    <%= link_to "Show", drill_group_drill_path(@dg, drill), class: "btn btn-primary btn-sm pull-right" %>
-    </div>
-
-  <% end %>
-</div>
+    <% end %>
+  </div>
+<% end %>

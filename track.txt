@@ -8,15 +8,15 @@ Also weird space showing up.
 page: drill name, drill name, drill description. create answer box. All answers. Try answering this drill!
 ^ can you clean up page please so that it looks better for the admin?
 
+answer_id field in Drill model not necessary.
 
 
-categories_controller and routes updated
+======
+cleaned up drill show page, admin vs general user specific messages and views.
+added ruby logic:
+  for creating category when creating drill_group if category not in database
+  drill_group not shown in index when no drills exist unless admin.
 
-adding drill is now possible for general users... fix. admin only.
-
-if adding drill fixed, slack Ana.
-if categorization success, ana.
-
-
+=======
 telling me that "this is not the point" is very dismissive when I am responding to you.
 interrupting me when I'm talking is demeaning and disrespectful.
