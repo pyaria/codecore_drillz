@@ -8,16 +8,16 @@ class DrillCompletesController < ApplicationController
     @drillcomplete = DrillComplete.new
     @answers = @drill.answers
     @answers.each do |answer|
-      continue? = false
+      continue = false
       if answer.type_of == 0
-        continue? = true if answer.description == user_answer
+        continue = true if answer.description == user_answer
       elsif answer.type_of == 1
         reg = Regexp.new answer.description
-        continue? = true if reg === user_answer
+        continue = true if reg === user_answer
       else
 
       end
-      if continue?
+      if continue
         @dg = @drill.drill_group
         @answer = Answer.new
         @show_answers = true
@@ -69,5 +69,7 @@ class DrillCompletesController < ApplicationController
   def find_drill
     @drill = Drill.find params[:drill_id]
   end
+
+
 
 end
