@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-
+  mount_uploader :profile_pic, ProfilePicUploader
 
   has_many :drill_completes, dependent: :nullify
   has_many :drills, through: :drill_completes

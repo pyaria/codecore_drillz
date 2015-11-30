@@ -18,7 +18,8 @@ Rails.application.routes.draw do
   get "/your_badges", to: "badges#user_badges", as: :badges_of_user
   get "/leaderboard", to: "leaderboard#leaderboard", as: :leaderboard
 
-  get '/profile', to: "profile#show", as: 'profile'
+   get '/profile', to: "profile#show", as: 'profile'
+   post '/profile', to: "profile#update", as: 'edit_profile'
 
   resources :drills, only: [] do
     resources :answers, only: [:show, :edit, :destroy, :create]
