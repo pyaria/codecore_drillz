@@ -3,7 +3,7 @@
   <%= simple_form_for [@drill, @answer] do |answer| %>
     <%= answer.input :description %>
     <div class="buffer"></div>
-      <%= answer.input :type,
+      <%= answer.input :type_of,
               :collection => [[0, "Exact Match"], [1, "Regular Expression"], [2, "Test (RSpec)"]],
               :label_method => :last,
               :value_method => :first,
