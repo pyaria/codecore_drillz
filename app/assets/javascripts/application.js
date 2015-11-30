@@ -16,3 +16,9 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+$(document).ready(function() {
+  $('#myTabs a').click(function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+  });
+});

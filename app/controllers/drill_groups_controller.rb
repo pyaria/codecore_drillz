@@ -1,5 +1,5 @@
 class DrillGroupsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :index]
   before_action :find_drill_group, only: [:show, :edit, :update, :destroy]
 
 
