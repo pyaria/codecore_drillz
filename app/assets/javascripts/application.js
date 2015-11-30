@@ -21,4 +21,8 @@ $(document).ready(function() {
     e.preventDefault()
     $(this).tab('show')
   });
+
+  $('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').focus()
+})
 });

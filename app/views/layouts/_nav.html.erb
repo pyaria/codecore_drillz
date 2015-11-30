@@ -2,9 +2,10 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <a class="navbar-brand" href="<%= root_path %>" ><i class='glyphicon glyphicon-home'></i> Home</a>
-      <a class="navbar-brand" href="<%= leaderboard_path %>">Leaderboards</a>
-
+      <a class="navbar-brand" href="<%= root_path %>" >Home</a>
+      <% if user_signed_in? %>
+        <a class="navbar-brand" href="<%= leaderboard_path %>">Leaderboards</a>
+      <% end %>
     </div>
 
 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -13,6 +14,9 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
+          <% if current_user.admin? %>
+            <%= link_to "Badges", badges_path, class:"nav navbar-brand" %>
+          <% end %>
           <%= link_to "Drill Groups", user_drill_groups_path(current_user), class:"nav navbar-brand" %>
           <%= link_to "Profile", profile_path, class:"nav navbar-brand" %>
         <% end %>
