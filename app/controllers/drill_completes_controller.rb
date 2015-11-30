@@ -8,7 +8,9 @@ class DrillCompletesController < ApplicationController
     @drillcomplete = DrillComplete.new
     @answers = @drill.answers
     @answers.each do |answer|
-      if answer.description == user_answer
+      a = answer.description
+      reg = Regexp.new a
+      if reg === user_answer
         @dg = @drill.drill_group
         @answer = Answer.new
         @show_answers = true
